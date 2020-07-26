@@ -10,7 +10,8 @@ These extensions should be installed before loading the whole dconf:
 - [AppIndicator](https://extensions.gnome.org/extension/615/appindicator-support/)
 - [Status Area Horizontal Spacing](https://extensions.gnome.org/extension/355/status-area-horizontal-spacing/)
 - [Workspace Matrix](https://extensions.gnome.org/extension/1485/workspace-matrix/): Using this instead of Workspaces to Dock + Horizontal Workspaces.
-- [Workspaces to dock](https://extensions.gnome.org/extension/427/workspaces-to-dock/): I keep it installed but disabled, since it crash in the actual GNOME version.
+- [Workspaces to dock](https://extensions.gnome.org/extension/427/workspaces-to-dock/): I keep it installed but disabled, since it crash in the actual GNOME version (3.36.4).
+
 And also, [Tilix](https://github.com/gnunn1/tilix), my terminal of choice.
 
 To load the whole dconf, run:
