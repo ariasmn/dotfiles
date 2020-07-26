@@ -58,11 +58,14 @@ show-battery-percentage=false
 toolkit-accessibility=false
 
 [org/gnome/desktop/notifications]
-application-children=['org-gnome-software', 'org-gnome-terminal', 'com-gexperts-tilix']
+application-children=['org-gnome-software', 'org-gnome-terminal', 'com-gexperts-tilix', 'org-freedesktop-problems-applet']
 show-banners=true
 
 [org/gnome/desktop/notifications/application/com-gexperts-tilix]
 application-id='com.gexperts.Tilix.desktop'
+
+[org/gnome/desktop/notifications/application/org-freedesktop-problems-applet]
+application-id='org.freedesktop.problems.applet.desktop'
 
 [org/gnome/desktop/notifications/application/org-gnome-software]
 application-id='org.gnome.Software.desktop'
@@ -92,6 +95,7 @@ idle-delay=uint32 0
 
 [org/gnome/desktop/wm/preferences]
 button-layout='appmenu:minimize,maximize,close'
+num-workspaces=4
 
 [org/gnome/evolution-data-server]
 migrated=true
@@ -103,7 +107,7 @@ active-plugins=['filebrowser', 'modelines', 'docinfo', 'time', 'spell']
 [org/gnome/gedit/plugins/filebrowser]
 root='file:///'
 tree-view=true
-virtual-root='file:///tmp'
+virtual-root='file:///home/ismael/Documents/dotfiles'
 
 [org/gnome/gedit/preferences/editor]
 highlight-current-line=false
@@ -117,7 +121,7 @@ show-tabs-mode='auto'
 bottom-panel-size=140
 side-panel-active-page='GeditWindowDocumentsPanel'
 side-panel-size=200
-size=(1453, 802)
+size=(1675, 802)
 state=87168
 
 [org/gnome/login-screen]
@@ -156,7 +160,7 @@ antialiasing='grayscale'
 hinting='slight'
 
 [org/gnome/shell]
-enabled-extensions=['appindicatorsupport@rgcjonas.gmail.com', 'status-area-horizontal-spacing@mathematical.coffee.gmail.com', 'workspaces-to-dock@passingthru67.gmail.com', 'horizontal-workspaces@gnome-shell-extensions.gcampax.github.com']
+enabled-extensions=['appindicatorsupport@rgcjonas.gmail.com', 'status-area-horizontal-spacing@mathematical.coffee.gmail.com', 'wsmatrix@martin.zurowietz.de']
 favorite-apps=['google-chrome.desktop', 'org.gnome.Nautilus.desktop']
 
 [org/gnome/shell/app-switcher]
@@ -165,16 +169,30 @@ current-workspace-only=true
 [org/gnome/shell/extensions/status-area-horizontal-spacing]
 hpadding=1
 
+[org/gnome/shell/extensions/topicons-redux]
+brightness=0.69999999999999996
+icon-size=28
+offset=6
+
 [org/gnome/shell/extensions/workspaces-to-dock]
+animation-time=0.40000000000000002
 autohide=false
 center-thumbnails-on-dock=true
 customize-height=true
 customize-height-option=1
+dock-fixed=false
 dock-position='TOP'
 hide-dash=false
+hide-delay=0.20000000000000001
 hide-workspace-switcher-popup=true
 intellihide=false
+show-delay=0.40000000000000002
+toggle-overview=false
 workspace-captions=false
+
+[org/gnome/shell/extensions/wsmatrix]
+num-columns=4
+num-rows=1
 
 [org/gnome/shell/world-clocks]
 locations=@av []
