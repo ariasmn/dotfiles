@@ -33,3 +33,5 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 # Aliases
 alias ls='ls -p --color=auto'
 alias ll='ls -lah'
+alias vi='nvim'
+alias vim='nvim'

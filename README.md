@@ -1,9 +1,20 @@
 # Ismael's dotfiles
 
-:warning: Under construction :warning:
-
 Backup of my personal dotfiles.
-Keep in mind that some dotfiles need packages to be installed (tilix for example). Cheatsheet (if needed) about installation inside each folder.
+Currently using Fedora WS as my distro and GNOME as my DE.
+
+### Load GNOME config
+
+These extensions should be installed before loading the whole dconf:
+
+- [AppIndicator](https://extensions.gnome.org/extension/615/appindicator-support/)
+- [Status Area Horizontal Spacing](https://extensions.gnome.org/extension/355/status-area-horizontal-spacing/)
+- [Workspaces to dock](https://extensions.gnome.org/extension/427/workspaces-to-dock/)
+And also, [Tilix](https://github.com/gnunn1/tilix), my terminal of choice.
+
+To load the whole dconf, run:
+
+`dconf load / < dconf-settings.dconf`
 
 ### Disable snd_hda_intel power saving settings
 
