@@ -1,7 +1,7 @@
-# Ismael's dotfiles
+# dotfiles
+These are the config files to set up a system so I feel comfortable using it.
 
-Backup of my personal dotfiles.
-Currently using Fedora WS as my distro and GNOME as my DE.
+Currently running Fedora as my distro and GNOME as my DE.
 
 ### Load GNOME config
 
@@ -17,6 +17,12 @@ And also, [Tilix](https://github.com/gnunn1/tilix), my terminal of choice.
 To load the whole dconf, run:
 
 `dconf load / < dconf-settings.dconf`
+
+### Zsh theme
+I use [powerlevel10k](https://github.com/romkatv/powerlevel10k) as my zsh theme.
+The installation is [manual](https://github.com/romkatv/powerlevel10k#manual), and the only thing I do different from the provided instructions is that I clone the repository into a hidden folder, like so:
+
+`git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.powerlevel10k`
 
 ### Disable snd_hda_intel power saving settings
 
