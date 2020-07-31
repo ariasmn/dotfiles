@@ -15,7 +15,7 @@ use-theme-colors=true
 visible-name='Default'
 
 [org/gnome/control-center]
-last-panel='keyboard'
+last-panel='power'
 
 [org/gnome/desktop/app-folders]
 folder-children=['Utilities', 'YaST']
@@ -58,20 +58,31 @@ show-battery-percentage=false
 toolkit-accessibility=false
 
 [org/gnome/desktop/notifications]
-application-children=['org-gnome-software', 'org-gnome-terminal', 'com-gexperts-tilix', 'org-freedesktop-problems-applet']
+application-children=['org-gnome-software', 'org-gnome-terminal', 'com-gexperts-tilix', 'org-freedesktop-problems-applet', 'org-gnome-nautilus', 'gnome-power-panel']
 show-banners=true
 
 [org/gnome/desktop/notifications/application/com-gexperts-tilix]
 application-id='com.gexperts.Tilix.desktop'
 
+[org/gnome/desktop/notifications/application/gnome-power-panel]
+application-id='gnome-power-panel.desktop'
+
 [org/gnome/desktop/notifications/application/org-freedesktop-problems-applet]
 application-id='org.freedesktop.problems.applet.desktop'
+
+[org/gnome/desktop/notifications/application/org-gnome-nautilus]
+application-id='org.gnome.Nautilus.desktop'
 
 [org/gnome/desktop/notifications/application/org-gnome-software]
 application-id='org.gnome.Software.desktop'
 
 [org/gnome/desktop/notifications/application/org-gnome-terminal]
 application-id='org.gnome.Terminal.desktop'
+
+[org/gnome/desktop/peripherals/mouse]
+accel-profile='default'
+natural-scroll=false
+speed=-0.073529411764705843
 
 [org/gnome/desktop/peripherals/touchpad]
 click-method='areas'
@@ -97,6 +108,13 @@ idle-delay=uint32 0
 button-layout='appmenu:minimize,maximize,close'
 num-workspaces=4
 
+[org/gnome/eog/view]
+background-color='rgb(0,0,0)'
+use-background-color=true
+
+[org/gnome/evince/default]
+window-ratio=(2.8742969647692833, 0.71258907363420432)
+
 [org/gnome/evolution-data-server]
 migrated=true
 network-monitor-gio-name=''
@@ -107,7 +125,7 @@ active-plugins=['filebrowser', 'modelines', 'docinfo', 'time', 'spell']
 [org/gnome/gedit/plugins/filebrowser]
 root='file:///'
 tree-view=true
-virtual-root='file:///home/ismael/Documents/dotfiles'
+virtual-root='file:///etc'
 
 [org/gnome/gedit/preferences/editor]
 highlight-current-line=false
@@ -121,7 +139,7 @@ show-tabs-mode='auto'
 bottom-panel-size=140
 side-panel-active-page='GeditWindowDocumentsPanel'
 side-panel-size=200
-size=(1675, 802)
+size=(960, 1033)
 state=87168
 
 [org/gnome/login-screen]
@@ -154,13 +172,15 @@ name='Open Terminal'
 power-button-action='interactive'
 sleep-inactive-ac-timeout=3600
 sleep-inactive-ac-type='nothing'
+sleep-inactive-battery-type='nothing'
 
 [org/gnome/settings-daemon/plugins/xsettings]
 antialiasing='grayscale'
 hinting='slight'
 
 [org/gnome/shell]
-enabled-extensions=['appindicatorsupport@rgcjonas.gmail.com', 'status-area-horizontal-spacing@mathematical.coffee.gmail.com', 'wsmatrix@martin.zurowietz.de']
+command-history=['r']
+enabled-extensions=['wsmatrix@martin.zurowietz.de']
 favorite-apps=['google-chrome.desktop', 'org.gnome.Nautilus.desktop']
 
 [org/gnome/shell/app-switcher]
@@ -168,11 +188,6 @@ current-workspace-only=true
 
 [org/gnome/shell/extensions/status-area-horizontal-spacing]
 hpadding=1
-
-[org/gnome/shell/extensions/topicons-redux]
-brightness=0.69999999999999996
-icon-size=28
-offset=6
 
 [org/gnome/shell/extensions/workspaces-to-dock]
 animation-time=0.40000000000000002
@@ -198,9 +213,9 @@ num-rows=1
 locations=@av []
 
 [org/gnome/software]
-check-timestamp=int64 1595754969
+check-timestamp=int64 1596204511
 first-run=false
-online-updates-timestamp=int64 1595755020
+online-updates-timestamp=int64 1596033305
 
 [org/gnome/system/location]
 enabled=false
@@ -220,5 +235,5 @@ sort-column='name'
 sort-directories-first=false
 sort-order='ascending'
 type-format='category'
-window-position=(26, 23)
+window-position=(359, 79)
 window-size=(1203, 902)
