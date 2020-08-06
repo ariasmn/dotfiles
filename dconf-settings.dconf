@@ -1,5 +1,6 @@
 [com/gexperts/Tilix]
 app-title='${appName}'
+prompt-on-delete-profile=true
 session-name=''
 terminal-title-show-when-single=false
 terminal-title-style='small'
@@ -7,15 +8,70 @@ use-overlay-scrollbar=true
 warn-vte-config-issue=false
 window-style='normal'
 
-[com/gexperts/Tilix/profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d]
-palette=['#2E2E34343636', '#CCCC00000000', '#4E4E9A9A0606', '#EDEDD4D40000', '#72729F9FCFCF', '#757550507B7B', '#060698209A9A', '#D3D3D7D7CFCF', '#555557575353', '#EFEF29292929', '#8A8AE2E23434', '#FCFCE9E94F4F', '#72729F9FCFCF', '#ADAD7F7FA8A8', '#3434E2E2E2E2', '#EEEEEEEEECEC']
+[com/gexperts/Tilix/profiles]
+default='6415278a-af88-4005-9d83-c4a442ba802b'
+list=['6415278a-af88-4005-9d83-c4a442ba802b']
+
+[com/gexperts/Tilix/profiles/6415278a-af88-4005-9d83-c4a442ba802b]
+allow-bold=true
+automatic-switch=@as []
+background-color='#1E1E1E1E1E1E'
+background-transparency-percent=0
+backspace-binding='ascii-delete'
+badge-color='#ffffff'
+badge-color-set=false
+badge-font='Monospace 12'
+badge-position='northeast'
+badge-text=''
+badge-use-system-font=true
+bold-color='#ffffff'
+bold-color-set=false
+bold-is-bright=true
+cell-height-scale=1.0
+cell-width-scale=1.0
+cjk-utf8-ambiguous-width='narrow'
+cursor-background-color='#000000'
+cursor-blink-mode='system'
+cursor-colors-set=false
+cursor-foreground-color='#ffffff'
+cursor-shape='block'
+custom-command=''
+custom-hyperlinks=@as []
+default-size-columns=80
+default-size-rows=24
+delete-binding='delete-sequence'
+dim-transparency-percent=0
+draw-margin=80
+encoding='UTF-8'
+exit-action='close'
+font='Monospace 12'
+foreground-color='#FFFFFF'
+highlight-background-color='#000000'
+highlight-colors-set=false
+highlight-foreground-color='#ffffff'
+login-shell=false
+notify-silence-enabled=false
+notify-silence-threshold=0
+palette=['#2E3436', '#CC0000', '#4D4D9A9A0606', '#EDEDD3D30000', '#72729E9ECFCF', '#75507B', '#06989A', '#D3D7CF', '#555753', '#EF2929', '#8AE234', '#FCE94F', '#729FCF', '#AD7FA8', '#34E2E2', '#EEEEEC']
+rewrap-on-resize=true
+scroll-on-keystroke=true
+scroll-on-output=false
+scrollback-lines=8192
+scrollback-unlimited=false
+select-by-word-chars='-,./?%&#:_'
+shortcut='disabled'
+show-scrollbar=true
 terminal-bell='none'
 terminal-title=' '
-use-theme-colors=true
+text-blink-mode='always'
+triggers=@as []
+use-custom-command=false
+use-system-font=true
+use-theme-colors=false
 visible-name='Default'
 
 [org/gnome/control-center]
-last-panel='power'
+last-panel='network'
 
 [org/gnome/desktop/app-folders]
 folder-children=['Utilities', 'YaST']
@@ -58,7 +114,7 @@ show-battery-percentage=false
 toolkit-accessibility=false
 
 [org/gnome/desktop/notifications]
-application-children=['org-gnome-software', 'org-gnome-terminal', 'com-gexperts-tilix', 'org-freedesktop-problems-applet', 'org-gnome-nautilus', 'gnome-power-panel']
+application-children=['org-gnome-software', 'org-gnome-terminal', 'com-gexperts-tilix', 'org-freedesktop-problems-applet', 'org-gnome-nautilus', 'gnome-power-panel', 'google-chrome', 'org-phoenicis-playonlinux']
 show-banners=true
 
 [org/gnome/desktop/notifications/application/com-gexperts-tilix]
@@ -66,6 +122,9 @@ application-id='com.gexperts.Tilix.desktop'
 
 [org/gnome/desktop/notifications/application/gnome-power-panel]
 application-id='gnome-power-panel.desktop'
+
+[org/gnome/desktop/notifications/application/google-chrome]
+application-id='google-chrome.desktop'
 
 [org/gnome/desktop/notifications/application/org-freedesktop-problems-applet]
 application-id='org.freedesktop.problems.applet.desktop'
@@ -78,6 +137,9 @@ application-id='org.gnome.Software.desktop'
 
 [org/gnome/desktop/notifications/application/org-gnome-terminal]
 application-id='org.gnome.Terminal.desktop'
+
+[org/gnome/desktop/notifications/application/org-phoenicis-playonlinux]
+application-id='org.phoenicis.playonlinux.desktop'
 
 [org/gnome/desktop/peripherals/mouse]
 accel-profile='default'
@@ -113,7 +175,7 @@ background-color='rgb(0,0,0)'
 use-background-color=true
 
 [org/gnome/evince/default]
-window-ratio=(2.8742969647692833, 0.71258907363420432)
+window-ratio=(2.8737890440491309, 1.2072714706531016)
 
 [org/gnome/evolution-data-server]
 migrated=true
@@ -125,7 +187,7 @@ active-plugins=['filebrowser', 'modelines', 'docinfo', 'time', 'spell']
 [org/gnome/gedit/plugins/filebrowser]
 root='file:///'
 tree-view=true
-virtual-root='file:///etc'
+virtual-root='file:///home/ismael/Documents'
 
 [org/gnome/gedit/preferences/editor]
 highlight-current-line=false
@@ -139,13 +201,8 @@ show-tabs-mode='auto'
 bottom-panel-size=140
 side-panel-active-page='GeditWindowDocumentsPanel'
 side-panel-size=200
-size=(960, 1033)
-state=87168
-
-[org/gnome/login-screen]
-enable-fingerprint-authentication=true
-enable-password-authentication=true
-enable-smartcard-authentication=false
+size=(1920, 1033)
+state=43908
 
 [org/gnome/mutter]
 dynamic-workspaces=false
@@ -157,7 +214,7 @@ search-filter-time-type='last_modified'
 search-view='list-view'
 
 [org/gnome/nautilus/window-state]
-initial-size=(890, 550)
+initial-size=(960, 1033)
 maximized=false
 
 [org/gnome/settings-daemon/plugins/media-keys]
@@ -180,8 +237,8 @@ hinting='slight'
 
 [org/gnome/shell]
 command-history=['r']
-enabled-extensions=['wsmatrix@martin.zurowietz.de']
-favorite-apps=['google-chrome.desktop', 'org.gnome.Nautilus.desktop']
+enabled-extensions=['wsmatrix@martin.zurowietz.de', 'dash-to-panel@jderose9.github.com']
+favorite-apps=['google-chrome.desktop', 'com.discordapp.Discord.desktop', 'org.gnome.Nautilus.desktop']
 
 [org/gnome/shell/app-switcher]
 current-workspace-only=true
@@ -213,16 +270,16 @@ num-rows=1
 locations=@av []
 
 [org/gnome/software]
-check-timestamp=int64 1596204511
+check-timestamp=int64 1596722120
 first-run=false
-online-updates-timestamp=int64 1596033305
+online-updates-timestamp=int64 1596722156
 
 [org/gnome/system/location]
 enabled=false
 
 [org/gtk/settings/color-chooser]
-custom-colors=[(0.396078431372549, 0.4823529411764706, 0.51372549019607838, 1.0), (0.37254901960784315, 0.35294117647058826, 0.37647058823529411, 1.0), (0.11764705882352941, 0.11764705882352941, 0.11764705882352941, 1.0)]
-selected-color=(true, 0.92941176470588238, 0.83137254901960789, 0.0, 1.0)
+custom-colors=[(0.30588235294117644, 0.60392156862745094, 0.023529411764705889, 1.0), (0.44705882352941179, 0.62352941176470578, 0.81176470588235294, 1.0), (0.14901960784313725, 0.54509803921568623, 0.82352941176470584, 1.0), (0.027450980392156862, 0.21176470588235294, 0.25882352941176473, 1.0), (0.0, 0.16862745098039217, 0.21176470588235294, 1.0), (0.29411764705882354, 0.0, 1.0, 1.0), (0.29729729729729737, 0.0, 1.0, 1.0), (0.18823529411764706, 0.18823529411764706, 0.18823529411764706, 1.0)]
+selected-color=(true, 0.30588235294117644, 0.60392156862745094, 0.023529411764705889, 1.0)
 
 [org/gtk/settings/file-chooser]
 date-format='regular'

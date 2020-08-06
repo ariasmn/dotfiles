@@ -1,0 +1,11 @@
+{
+    "editor.minimap.enabled": false,
+    "search.useIgnoreFiles": false,
+    "gitlens.views.search.files.layout": "list",
+    "workbench.colorCustomizations": {
+        "terminal.ansiYellow":"#EDD400",
+        "terminal.ansiBlue":"#729FCF",
+        "terminal.ansiGreen":"#4E9A06",
+        "terminal.background":"#1E1E1E",
+    }
+}
