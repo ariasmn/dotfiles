@@ -1,75 +1,6 @@
-[com/gexperts/Tilix]
-app-title='${appName}'
-prompt-on-close=true
-prompt-on-delete-profile=true
-session-name=''
-terminal-title-show-when-single=false
-terminal-title-style='small'
-use-overlay-scrollbar=true
-warn-vte-config-issue=false
-window-style='normal'
-
-[com/gexperts/Tilix/profiles]
-default='6415278a-af88-4005-9d83-c4a442ba802b'
-list=['6415278a-af88-4005-9d83-c4a442ba802b']
-
-[com/gexperts/Tilix/profiles/6415278a-af88-4005-9d83-c4a442ba802b]
-allow-bold=true
-automatic-switch=@as []
-background-color='#1E1E1E1E1E1E'
-background-transparency-percent=0
-backspace-binding='ascii-delete'
-badge-color='#ffffff'
-badge-color-set=false
-badge-font='Monospace 12'
-badge-position='northeast'
-badge-text=''
-badge-use-system-font=true
-bold-color='#ffffff'
-bold-color-set=false
-bold-is-bright=false
-cell-height-scale=1.0
-cell-width-scale=1.0
-cjk-utf8-ambiguous-width='narrow'
-cursor-background-color='#000000'
-cursor-blink-mode='system'
-cursor-colors-set=false
-cursor-foreground-color='#ffffff'
-cursor-shape='block'
-custom-command=''
-custom-hyperlinks=@as []
-default-size-columns=80
-default-size-rows=24
-delete-binding='delete-sequence'
-dim-transparency-percent=0
-draw-margin=80
-encoding='UTF-8'
-exit-action='close'
-font='Monospace 12'
-foreground-color='#FFFFFF'
-highlight-background-color='#000000'
-highlight-colors-set=false
-highlight-foreground-color='#ffffff'
-login-shell=false
-notify-silence-enabled=false
-notify-silence-threshold=0
-palette=['#2E3436', '#CC0000', '#4D4D9A9A0606', '#EDEDD3D30000', '#72729E9ECFCF', '#75507B', '#06989A', '#D3D7CF', '#555753', '#EF2929', '#8A8AE2E23434', '#FCE94F', '#729FCF', '#AD7FA8', '#34E2E2', '#EEEEEC']
-rewrap-on-resize=true
-scroll-on-keystroke=true
-scroll-on-output=false
-scrollback-lines=8192
-scrollback-unlimited=false
-select-by-word-chars='-,./?%&#:_'
-shortcut='disabled'
-show-scrollbar=true
-terminal-bell='none'
-terminal-title=' '
-text-blink-mode='always'
-triggers=@as []
-use-custom-command=false
-use-system-font=true
-use-theme-colors=false
-visible-name='Default'
+[org/gnome/Totem]
+active-plugins=['vimeo', 'variable-rate', 'skipto', 'screenshot', 'screensaver', 'save-file', 'rotation', 'recent', 'movie-properties', 'open-directory', 'media-player-keys', 'autoload-subtitles', 'apple-trailers']
+subtitle-encoding='UTF-8'
 
 [org/gnome/boxes]
 first-run=false
@@ -92,7 +23,7 @@ window-position=(26, 23)
 word-size=64
 
 [org/gnome/control-center]
-last-panel='sound'
+last-panel='keyboard'
 
 [org/gnome/desktop/app-folders]
 folder-children=['Utilities', 'YaST']
@@ -126,32 +57,23 @@ xkb-options=['lv3:ralt_switch']
 [org/gnome/desktop/interface]
 clock-show-seconds=false
 clock-show-weekday=false
-enable-animations=false
+enable-animations=true
 enable-hot-corners=false
 gtk-im-module='gtk-im-context-simple'
 gtk-theme='Adwaita-dark'
 icon-theme='Adwaita'
-show-battery-percentage=false
+show-battery-percentage=true
 toolkit-accessibility=false
 
 [org/gnome/desktop/notifications]
-application-children=['org-gnome-software', 'org-gnome-terminal', 'com-gexperts-tilix', 'org-freedesktop-problems-applet', 'org-gnome-nautilus', 'gnome-power-panel', 'google-chrome', 'org-phoenicis-playonlinux', 'gnome-network-panel', 'flameshot', 'org-gnome-boxes', 'virtualbox', 'steam']
+application-children=['org-gnome-software', 'org-gnome-terminal', 'org-freedesktop-problems-applet', 'org-gnome-nautilus', 'gnome-power-panel', 'gnome-network-panel', 'org-gnome-boxes']
 show-banners=true
-
-[org/gnome/desktop/notifications/application/com-gexperts-tilix]
-application-id='com.gexperts.Tilix.desktop'
-
-[org/gnome/desktop/notifications/application/flameshot]
-application-id='flameshot.desktop'
 
 [org/gnome/desktop/notifications/application/gnome-network-panel]
 application-id='gnome-network-panel.desktop'
 
 [org/gnome/desktop/notifications/application/gnome-power-panel]
 application-id='gnome-power-panel.desktop'
-
-[org/gnome/desktop/notifications/application/google-chrome]
-application-id='google-chrome.desktop'
 
 [org/gnome/desktop/notifications/application/org-freedesktop-problems-applet]
 application-id='org.freedesktop.problems.applet.desktop'
@@ -168,15 +90,6 @@ application-id='org.gnome.Software.desktop'
 [org/gnome/desktop/notifications/application/org-gnome-terminal]
 application-id='org.gnome.Terminal.desktop'
 
-[org/gnome/desktop/notifications/application/org-phoenicis-playonlinux]
-application-id='org.phoenicis.playonlinux.desktop'
-
-[org/gnome/desktop/notifications/application/steam]
-application-id='steam.desktop'
-
-[org/gnome/desktop/notifications/application/virtualbox]
-application-id='virtualbox.desktop'
-
 [org/gnome/desktop/peripherals/mouse]
 accel-profile='default'
 natural-scroll=false
@@ -190,12 +103,15 @@ two-finger-scrolling-enabled=true
 disable-microphone=false
 report-technical-problems=false
 
+[org/gnome/desktop/search-providers]
+sort-order=['org.gnome.Contacts.desktop', 'org.gnome.Documents.desktop', 'org.gnome.Nautilus.desktop']
+
 [org/gnome/desktop/session]
 idle-delay=uint32 0
 
 [org/gnome/desktop/sound]
 event-sounds=true
-theme-name='__custom'
+theme-name='freedesktop'
 
 [org/gnome/desktop/wm/keybindings]
 switch-applications=@as []
@@ -231,12 +147,12 @@ window-height=480
 window-width=1014
 
 [org/gnome/gedit/plugins]
-active-plugins=['filebrowser', 'modelines', 'docinfo', 'time', 'spell']
+active-plugins=['time', 'spell', 'modelines', 'filebrowser', 'docinfo']
 
 [org/gnome/gedit/plugins/filebrowser]
 root='file:///'
 tree-view=true
-virtual-root='file:///home/ismael'
+virtual-root='file:///home'
 
 [org/gnome/gedit/preferences/editor]
 highlight-current-line=false
@@ -250,8 +166,8 @@ show-tabs-mode='auto'
 bottom-panel-size=140
 side-panel-active-page='GeditWindowDocumentsPanel'
 side-panel-size=200
-size=(1920, 1033)
-state=43908
+size=(1929, 1366)
+state=45952
 
 [org/gnome/mutter]
 dynamic-workspaces=false
@@ -267,7 +183,7 @@ search-view='list-view'
 
 [org/gnome/nautilus/window-state]
 initial-size=(1720, 1366)
-maximized=false
+maximized=true
 
 [org/gnome/nm-applet/eap/11766cf1-7b85-451a-b571-24bc5e58ff43]
 ignore-ca-cert=false
@@ -307,7 +223,7 @@ screenshot=@as []
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
 binding='<Primary><Alt>t'
-command='/usr/bin/tilix'
+command='/usr/bin/terminator'
 name='Open Terminal'
 
 [org/gnome/settings-daemon/plugins/power]
@@ -321,9 +237,10 @@ antialiasing='grayscale'
 hinting='slight'
 
 [org/gnome/shell]
+app-picker-layout=[{'org.gnome.Boxes.desktop': <{'position': <0>}>, 'brave-browser.desktop': <{'position': <1>}>, 'org.gnome.Calendar.desktop': <{'position': <2>}>, 'org.gnome.Cheese.desktop': <{'position': <3>}>, 'org.gnome.clocks.desktop': <{'position': <4>}>, 'org.gnome.Contacts.desktop': <{'position': <5>}>, 'com.discordapp.Discord.desktop': <{'position': <6>}>, 'org.gnome.Nautilus.desktop': <{'position': <7>}>, 'firefox.desktop': <{'position': <8>}>, 'htop.desktop': <{'position': <9>}>, 'libreoffice-calc.desktop': <{'position': <10>}>, 'libreoffice-impress.desktop': <{'position': <11>}>, 'libreoffice-writer.desktop': <{'position': <12>}>, 'org.gnome.Maps.desktop': <{'position': <13>}>, 'org.gnome.Photos.desktop': <{'position': <14>}>, 'remote-viewer.desktop': <{'position': <15>}>, 'rhythmbox.desktop': <{'position': <16>}>, 'gnome-control-center.desktop': <{'position': <17>}>, 'org.gnome.Software.desktop': <{'position': <18>}>, 'terminator.desktop': <{'position': <19>}>, 'org.gnome.gedit.desktop': <{'position': <20>}>, 'Utilities': <{'position': <21>}>, 'org.gnome.Totem.desktop': <{'position': <22>}>, 'virt-manager.desktop': <{'position': <23>}>}, {'org.gnome.Weather.desktop': <{'position': <0>}>}]
 command-history=['r', 'rrr', 'rrrrr', 'rrrrrrr']
-enabled-extensions=['wsmatrix@martin.zurowietz.de', 'dash-to-panel@jderose9.github.com', 'gTile@vibou', 'trayIconsReloaded@selfmade.pl']
-favorite-apps=['google-chrome.desktop', 'com.discordapp.Discord.desktop', 'org.gnome.Nautilus.desktop']
+enabled-extensions=['wsmatrix@martin.zurowietz.de', 'dash-to-panel@jderose9.github.com', 'gTile@vibou', 'appindicatorsupport@rgcjonas.gmail.com']
+favorite-apps=['brave-browser.desktop', 'terminator.desktop', 'org.gnome.Nautilus.desktop', 'com.discordapp.Discord.desktop']
 
 [org/gnome/shell/app-switcher]
 current-workspace-only=true
@@ -331,30 +248,24 @@ current-workspace-only=true
 [org/gnome/shell/extensions/gamemode]
 active-color='rgb(115,210,22)'
 
-[org/gnome/shell/extensions/gtile]
-show-icon=false
-
-[org/gnome/shell/extensions/trayIconsReloaded]
-icon-margin=0
-icon-size=21
-icons-limit=4
-position-weight=3
-
 [org/gnome/shell/extensions/wsmatrix]
 num-columns=4
 num-rows=1
 
+[org/gnome/shell/world-clocks]
+locations=@av []
+
 [org/gnome/software]
-check-timestamp=int64 1599993606
+check-timestamp=int64 1604403281
 first-run=false
-online-updates-timestamp=int64 1599993619
+online-updates-timestamp=int64 1604403338
 
 [org/gnome/system/location]
 enabled=false
 
 [org/gtk/settings/color-chooser]
-custom-colors=[(0.54117647058823504, 0.88627450980392153, 0.20392156862745089, 1.0), (0.54117647058823515, 0.88627450980392153, 0.20392156862745089, 1.0), (0.30588235294117644, 0.60392156862745094, 0.023529411764705889, 1.0), (0.44705882352941179, 0.62352941176470578, 0.81176470588235294, 1.0), (0.14901960784313725, 0.54509803921568623, 0.82352941176470584, 1.0), (0.027450980392156862, 0.21176470588235294, 0.25882352941176473, 1.0), (0.0, 0.16862745098039217, 0.21176470588235294, 1.0), (0.29411764705882354, 0.0, 1.0, 1.0)]
-selected-color=(true, 0.54117647058823526, 0.88627450980392153, 0.20392156862745098, 1.0)
+custom-colors=[(0.58294117647058807, 0.58269828431372528, 0.58281973039215673, 1.0), (0.65294117647058814, 0.65266911764705871, 0.65280514705882342, 1.0), (0.75294117647058822, 0.74509803921568629, 0.74901960784313726, 1.0), (0.26117647058823523, 0.26117647058823523, 0.26117647058823523, 1.0), (0.78431372549019607, 0.0, 0.011764705882352941, 1.0), (0.44705882352941179, 0.61960784313725492, 0.81176470588235294, 1.0), (0.92941176470588238, 0.82745098039215681, 0.0, 1.0), (0.66666666666666663, 0.66666666666666663, 0.66666666666666663, 1.0)]
+selected-color=(true, 0.58294117647058807, 0.58269828431372528, 0.58281973039215673, 1.0)
 
 [org/gtk/settings/file-chooser]
 date-format='regular'
@@ -367,6 +278,5 @@ sort-column='name'
 sort-directories-first=false
 sort-order='descending'
 type-format='category'
-window-position=(259, 259)
+window-position=(607, 259)
 window-size=(1203, 902)
-

@@ -7,10 +7,8 @@ Currently running Fedora as my distro and GNOME as my DE.
 
 These extensions should be installed before loading the whole dconf:
 
-- [Tray Icons Reloaded](https://github.com/MartinPL/Tray-Icons-Reloaded)
+- [AppIndicator and KStatusNotifierItem Support](https://github.com/ubuntu/gnome-shell-extension-appindicator)
 - [Workspace Matrix](https://extensions.gnome.org/extension/1485/workspace-matrix/): Using this instead of Workspaces to Dock + Horizontal Workspaces.
-
-And also, [Tilix](https://github.com/gnunn1/tilix), my terminal of choice.
 
 To load the whole dconf, run:
 
