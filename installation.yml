@@ -1,0 +1,95 @@
+- hosts: localhost
+  connection: local
+  tasks:
+        - name: Install Brave Browser
+          block:
+                  - name: Install dnf-plugins-core
+                    dnf:
+                            state: present
+                            name: dnf-plugins-core
+
+                  - name: Add Brave repo
+                    command: 
+                        cmd: dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/
+                        warn: false
+
+                  - name: Import asc
+                    command: 
+                        cmd: rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+                        warn: false
+
+                  - name: Install Brave
+                    dnf:
+                            state: present
+                            name: brave-browser
+          become: true
+          become_user: root
+          tags: installbrave
+        
+        - name: Install Gnome-tweaks 
+          dnf:
+                  state: present
+                  name: gnome-tweak-tool
+          become: true
+          become_user: root
+          tags: installgnometweaks
+
+        - name: Install/configure zsh and p10k
+          block:
+                  - name: Install util-linux-user
+                    dnf:
+                            state: present
+                            name: util-linux-user
+                    become: true
+                    become_user: root
+
+                  - name: Install zsh
+                    dnf:
+                            state: present
+                            name: zsh
+                    become: true
+                    become_user: root
+
+                  - name: Get zsh path
+                    command: which zsh
+                    register: zsh_path
+                 
+                  - name: Change default shell
+                    command: chsh -s {{zsh_path.stdout}} {{ lookup('env', 'USER') }}
+                    become: true
+                    become_user: root
+
+                  - name: Download and install powerlevel10k
+                    git:
+                            repo: https://github.com/romkatv/powerlevel10k.git
+                            dest: "{{ lookup('env', 'HOME') }}/.powerlevel10k"
+                            depth: 1
+
+                  - name: Copy .zshrc config file
+                    copy:
+                            src: "{{ lookup('env', 'PWD') }}/dotfiles/.zshrc"
+                            dest: "{{ lookup('env', 'HOME') }}/.zshrc"
+                            remote_src: true
+
+                  - name: Copy .p10k config file
+                    copy:
+                            src: "{{ lookup('env', 'PWD') }}/dotfiles/.p10k.zsh"
+                            dest: "{{ lookup('env', 'HOME') }}/.p10k.zsh"
+                            remote_src: true
+          tags: installzsh
+
+        - name: Install and configure Terminator
+          block:
+                  - name: Install Terminator
+                    dnf:
+                            state: present
+                            name: terminator
+                    become: true
+                    become_user: root
+
+                  - name: Copy Terminator config folder
+                    copy:
+                            src: "{{ lookup('env', 'PWD') }}/dotfiles/.config/terminator/"
+                            dest: "{{ lookup('env', 'HOME') }}/.config/terminator"
+                            remote_src: true
+          tags: installterminator
