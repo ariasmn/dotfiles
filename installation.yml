@@ -12,7 +12,7 @@
 
         - name: Add tlp config file
           copy:
-            src: "{{ lookup('env', 'PWD') }}/dotfiles/etc/tlp.conf"
+            src: "{{ playbook_dir }}/dotfiles/etc/tlp.conf"
             dest: "/etc/tlp.conf"
             remote_src: true
       become: true
@@ -23,11 +23,11 @@
       copy: src={{ item.src }} dest={{ item.dest }}
       with_items:
         - {
-            src: "{{ lookup('env', 'PWD') }}/dotfiles/etc/pulse/daemon.conf",
+            src: "{{ playbook_dir }}/dotfiles/etc/pulse/daemon.conf",
             dest: "/etc/pulse/daemon.conf",
           }
         - {
-            src: "{{ lookup('env', 'PWD') }}/dotfiles/etc/pulse/default.pa",
+            src: "{{ playbook_dir }}/dotfiles/etc/pulse/default.pa",
             dest: "/etc/pulse/default.pa",
           }
       become: true
@@ -74,6 +74,7 @@
         gnome_extension_ids:
           - 615
           - 1485
+      tags: installgnomeextensions
 
     - name: Install/configure zsh and p10k
       block:
@@ -96,7 +97,7 @@
           register: zsh_path
 
         - name: Change default shell
-          command: chsh -s {{zsh_path.stdout}} {{ lookup('env', 'USER') }}
+          command: chsh -s {{ zsh_path.stdout }} {{ lookup('env', 'USER') }}
           become: true
           become_user: root
 
@@ -108,13 +109,13 @@
 
         - name: Copy .zshrc config file
           copy:
-            src: "{{ lookup('env', 'PWD') }}/dotfiles/.zshrc"
+            src: "{{ playbook_dir }}/dotfiles/.zshrc"
             dest: "{{ lookup('env', 'HOME') }}/.zshrc"
             remote_src: true
 
         - name: Copy .p10k config file
           copy:
-            src: "{{ lookup('env', 'PWD') }}/dotfiles/.p10k.zsh"
+            src: "{{ playbook_dir }}/dotfiles/.p10k.zsh"
             dest: "{{ lookup('env', 'HOME') }}/.p10k.zsh"
             remote_src: true
       tags: installzsh
@@ -130,7 +131,11 @@
 
         - name: Copy Terminator config folder
           copy:
-            src: "{{ lookup('env', 'PWD') }}/dotfiles/.config/terminator/"
+            src: "{{ playbook_dir }}/dotfiles/.config/terminator/"
             dest: "{{ lookup('env', 'HOME') }}/.config/terminator"
             remote_src: true
       tags: installterminator
+    
+    - name: Load whole dconf
+      shell: dconf load / < "{{ playbook_dir }}/dotfiles/dconf-settings.dconf"
+      tags: loaddconf
