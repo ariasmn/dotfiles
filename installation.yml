@@ -162,6 +162,13 @@
             remote_src: true
       tags: installterminator
     
+    - name: Load nano config
+      copy:
+         src: "{{ playbook_dir }}/dotfiles/.nanorc"
+         dest: "{{ lookup('env', 'HOME') }}/.nanorc"
+         remote_src: true
+      tags: loadnanoconfig
+
     - name: Load whole dconf
       shell: dconf load / < "{{ playbook_dir }}/dotfiles/dconf-settings.dconf"
       tags: loaddconf

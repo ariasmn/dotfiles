@@ -1,0 +1,4 @@
+set brackets ""')>]}"
+set matchbrackets "(<[{)>]}"
+set tabsize 4
+set tabstospaces
