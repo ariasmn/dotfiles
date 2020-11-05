@@ -3,14 +3,28 @@ These are the config files to set up a system so I feel comfortable using it.
 
 Currently running Fedora as my distro and GNOME as my DE.
 
-### Load GNOME config
+### Automatic setup using ansible
+To quickly set-up different workstations using the same config across them, I used [Ansible](https://github.com/ansible/ansible).
 
-These extensions should be installed before loading the whole dconf:
+Just run the `bootstrap.sh` script to automatically install Ansible and run the playbook. It will install and load the dotfiles for different applications that I use.
 
-- [AppIndicator and KStatusNotifierItem Support](https://github.com/ubuntu/gnome-shell-extension-appindicator)
-- [Workspace Matrix](https://extensions.gnome.org/extension/1485/workspace-matrix/): Using this instead of Workspaces to Dock + Horizontal Workspaces.
+The playbook is a bit of a mess and could be refactored into different tasks but it works for my use.
 
-To load the whole dconf, run:
+Also, the gnome-extension's role is being used in my playbook (thanks to [Jared Hocutt](https://github.com/jaredhocutt/ansible-gnome-extensions))
+
+### Run a single Ansible task
+Each task has a tag so it can be run individually. To do so:
+
+`ansible-playbook installation.yml --tags "nameoftag"`
+
+### GNOME config
+
+These are the GNOME extensions that I use:
+
+- [AppIndicator and KStatusNotifierItem Support](https://extensions.gnome.org/extension/615/appindicator-support/)
+- [Workspace Matrix](https://extensions.gnome.org/extension/1485/workspace-matrix/)
+
+To load the whole dconf, you can run:
 
 `dconf load / < dconf-settings.dconf`
 
