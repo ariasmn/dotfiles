@@ -3,15 +3,17 @@
   title_transmit_bg_color = "#424242"
   title_inactive_bg_color = "#959595"
   inactive_color_offset = 1.0
+  always_split_with_profile = True
 [keybindings]
   split_horiz = <Primary><Alt>d
   split_vert = <Primary><Alt>r
 [profiles]
   [[default]]
-    background_color = "#1e1e1e"
     cursor_color = "#aaaaaa"
-    foreground_color = "#eeeeec"
-    palette = "#2e3436:#cc0000:#4e9a06:#edd300:#729ecf:#75507b:#06989a:#d3d7cf:#555753:#ef2929:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
+    font = MesloLGS NF 10
+    palette = "#2e3436:#cc0000:#4e9a06:#edd300:#729ecf:#75507b:#06989a:#d3d7cf:#555753:#ef2929:#8ae234:#c4a000:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
+    use_system_font = False
+    use_theme_colors = True
 [layouts]
   [[default]]
     [[[window0]]]

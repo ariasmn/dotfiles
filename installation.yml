@@ -155,6 +155,17 @@
           become: true
           become_user: root
 
+        - name: Install Meslo fonts
+          get_url:
+            url: "{{ item }}"
+            dest: "{{ lookup('env', 'HOME') }}/.local/share/fonts"
+          loop:
+            - https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
+            - https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf
+            - https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf
+            - https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf
+          become: false
+            
         - name: Copy Terminator config folder
           copy:
             src: "{{ playbook_dir }}/dotfiles/.config/terminator/"
