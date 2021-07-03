@@ -1,6 +1,19 @@
 - hosts: localhost
   connection: local
   tasks:
+    - name: Install KDE's Debian packages
+      apt:
+        state: present
+        name:
+          - kde-config-sddm
+          - sddm-theme-debian-breeze
+          - kde-config-screenlocker
+          - plymouth-theme-breeze
+          - kde-config-plymouth
+      become: true
+      become_user: root
+      tags: installinitialpackages
+      
     - name: Install and configure tlp
       block:
         - name: Install tlp
