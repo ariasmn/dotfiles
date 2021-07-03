@@ -4,7 +4,7 @@
     - name: Install and configure tlp
       block:
         - name: Install tlp
-          dnf:
+          apt:
             state: present
             name:
               - tlp
@@ -36,83 +36,45 @@
 
     - name: Install Brave Browser
       block:
-        - name: Install dnf-plugins-core
-          dnf:
+        - name: Install apt-transport-https
+          apt:
             state: present
-            name: dnf-plugins-core
+            name: apt-transport-https
 
-        - name: Add Brave's repo
+        - name: Add Brave's gpg
           command:
-            cmd: dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/
+            cmd: curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
             warn: false
 
-        - name: Import Brave's asc
-          command:
-            cmd: rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
-            warn: false
+        - name: Import Brave's repo
+          copy:
+            content: "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"
+            dest: "/etc/apt/sources.list.d/brave-browser-release.list"
+            remote_src: true
 
         - name: Install Brave
-          dnf:
+          apt:
             state: present
             name: brave-browser
+            update_cache: yes
       become: true
       become_user: root
       tags: installbrave
 
-    - name: Install and configure VSCode
+    - name: Install VSCode
       block:
-        - name: Import Microsoft's asc
-          command:
-            cmd: rpm --import https://packages.microsoft.com/keys/microsoft.asc
-            warn: false
-
-        - name: Add VSCode's repo content
-          shell: 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" 
-                  > /etc/yum.repos.d/vscode.repo'
-
         - name: Install VSCode
-          dnf:
-            state: present
-            name: code
+          apt:
+            deb: https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64
 
-        - name: Import VSCode's settings
-          copy:
-            src: "{{ playbook_dir }}/dotfiles/.config/Code/"
-            dest: "{{ lookup('env', 'HOME') }}/.config/Code"
-            remote_src: true
-          become: false  
       become: true
       become_user: root
       tags: installvscode
 
-    - name: Install Gnome-tweaks
-      dnf:
-        state: present
-        name: gnome-tweak-tool
-      become: true
-      become_user: root
-      tags: installgnometweaks
-
-    - name: Install Gnome Extensions
-      include_role: 
-        name: jaredhocutt.gnome_extensions
-      vars:
-        gnome_extension_ids:
-          - 615
-          - 1485
-      tags: installgnomeextensions
-
     - name: Install and configure zsh and powerlevel10k
-      block:
-        - name: Install util-linux-user
-          dnf:
-            state: present
-            name: util-linux-user
-          become: true
-          become_user: root
-
+      block:          
         - name: Install zsh
-          dnf:
+          apt:
             state: present
             name: zsh
           become: true
@@ -145,33 +107,6 @@
             dest: "{{ lookup('env', 'HOME') }}/.p10k.zsh"
             remote_src: true
       tags: installzsh
-
-    - name: Install and configure Terminator
-      block:
-        - name: Install Terminator
-          dnf:
-            state: present
-            name: terminator
-          become: true
-          become_user: root
-
-        - name: Install Meslo fonts
-          get_url:
-            url: "{{ item }}"
-            dest: "{{ lookup('env', 'HOME') }}/.local/share/fonts"
-          loop:
-            - https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
-            - https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf
-            - https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf
-            - https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf
-          become: false
-            
-        - name: Copy Terminator config folder
-          copy:
-            src: "{{ playbook_dir }}/dotfiles/.config/terminator/"
-            dest: "{{ lookup('env', 'HOME') }}/.config/terminator"
-            remote_src: true
-      tags: installterminator
     
     - name: Load nano config
       copy:
@@ -180,24 +115,21 @@
          remote_src: true
       tags: loadnanoconfig
 
-    - name: Load whole dconf
-      shell: dconf load / < "{{ playbook_dir }}/dotfiles/dconf-settings.dconf"
-      tags: loaddconf
-
-    - name: Debloat GNOME
-      dnf:
+    - name: Debloat KDE
+      apt:
         name:
-          - cheese
-          - rhythmbox
-          - totem
-          - gnome-photos
-          - gnome-boxes
-          - gnome-maps
-          - gnome-contacts
-          - gnome-weather
-          - gnome-software
+          - "akonadi-*"
         state: absent
         autoremove: yes
       become: true
       become_user: root
-      tags: debloatgnome
+      tags: debloatkde
+      
+    - name: Load whole config
+      copy: src={{ item.src }} dest={{ item.dest }}
+      with_items:
+            - { src: "{{ playbook_dir }}/dotfiles/.config/", dest: "{{ lookup('env', 'HOME') }}/.config" }
+            - { src: "{{ playbook_dir }}/dotfiles/.kde/", dest: "{{ lookup('env', 'HOME') }}/.kde" }
+            - { src: "{{ playbook_dir }}/dotfiles/.local/", dest: "{{ lookup('env', 'HOME') }}/.local" }
+      become: false
+      tags: loadconfig
