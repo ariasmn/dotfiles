@@ -7,6 +7,6 @@ PLAYBOOK="$ROOTDIR/installation.yml"
 
 apt update && apt install -y ansible
 
-ansible-playbook "$PLAYBOOK" --ask-become-pass
+sudo -u "$SUDO_USER" ansible-playbook "$PLAYBOOK" --ask-become-pass
 
 exit 0
