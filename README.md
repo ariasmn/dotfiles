@@ -17,17 +17,6 @@ Each task has a tag so it can be run individually. To do so:
 
 `ansible-playbook installation.yml --tags "nameoftag"`
 
-### GNOME config
-
-These are the GNOME extensions that I use:
-
-- [AppIndicator and KStatusNotifierItem Support](https://extensions.gnome.org/extension/615/appindicator-support/)
-- [Workspace Matrix](https://extensions.gnome.org/extension/1485/workspace-matrix/)
-
-To load the whole dconf, you can run:
-
-`dconf load / < dconf-settings.dconf`
-
 ### Zsh theme
 I use [powerlevel10k](https://github.com/romkatv/powerlevel10k) as my zsh theme.
 The installation is [manual](https://github.com/romkatv/powerlevel10k#manual), and the only thing I do different from the provided instructions is that I clone the repository into a hidden folder, like so:
