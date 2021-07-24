@@ -1,7 +1,7 @@
 # dotfiles
 These are the config files to set up a system so I feel comfortable using it.
 
-Currently running Fedora as my distro and GNOME as my DE.
+Currently running Debian as my distro and KDE as my DE.
 
 ### Automatic setup using ansible
 To quickly set-up different workstations using the same config across them, I used [Ansible](https://github.com/ansible/ansible).
@@ -9,8 +9,6 @@ To quickly set-up different workstations using the same config across them, I us
 Just run the `bootstrap.sh` script to automatically install Ansible and run the playbook. It will install and load the dotfiles for different applications that I use.
 
 The playbook is a bit of a mess and could be refactored into different tasks but it works for my use.
-
-Also, the gnome-extension's role is being used in my playbook (thanks to [Jared Hocutt](https://github.com/jaredhocutt/ansible-gnome-extensions))
 
 ### Run a single Ansible task
 Each task has a tag so it can be run individually. To do so:
