@@ -52,9 +52,13 @@
   </Menu>
  </MenuBar>
  <ActionProperties scheme="Default">
-  <Action shortcut="" name="clone-tab"/>
-  <Action shortcut="" name="help_contents"/>
-  <Action shortcut="Ctrl+Alt+R" name="split-view-left-right"/>
-  <Action shortcut="Ctrl+Alt+D" name="split-view-top-bottom"/>
+  <Action name="clone-tab" shortcut=""/>
+  <Action name="help_contents" shortcut=""/>
+  <Action name="split-view-left-right" shortcut="Ctrl+Alt+R"/>
+  <Action name="split-view-top-bottom" shortcut="Ctrl+Alt+D"/>
+  <Action name="focus-view-above" shortcut="Alt+Up"/>
+  <Action name="focus-view-below" shortcut="Alt+Down"/>
+  <Action name="focus-view-left" shortcut="Alt+Left"/>
+  <Action name="focus-view-right" shortcut="Alt+Right"/>
  </ActionProperties>
 </kpartgui>
