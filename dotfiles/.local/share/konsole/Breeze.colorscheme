@@ -26,13 +26,13 @@ Color=241,76,76
 Color=241,76,76
 
 [Color2]
-Color=106,153,85
+Color=92,206,2
 
 [Color2Faint]
-Color=181,206,168
+Color=116,206,67
 
 [Color2Intense]
-Color=181,206,168
+Color=116,206,67
 
 [Color3]
 Color=215,175,0
@@ -80,13 +80,13 @@ Color=229,229,229
 Color=229,229,229
 
 [Foreground]
-Color=212,212,212
+Color=244,244,244
 
 [ForegroundFaint]
-Color=212,212,212
+Color=244,244,244
 
 [ForegroundIntense]
-Color=212,212,212
+Color=244,244,244
 
 [General]
 Blur=false

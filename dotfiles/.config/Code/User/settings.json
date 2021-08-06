@@ -8,19 +8,19 @@
         "terminal.ansiBrightBlack": "#666666",
         "terminal.ansiBrightBlue": "#569cd6",
         "terminal.ansiBrightCyan": "#9cdcfe",
-        "terminal.ansiBrightGreen": "#b5cea8",
+        "terminal.ansiBrightGreen": "#74ce43",
         "terminal.ansiBrightMagenta": "#daadd6",
         "terminal.ansiBrightRed": "#f14c4c",
         "terminal.ansiBrightWhite": "#e5e5e5",
         "terminal.ansiBrightYellow": "#DCDCAA",
         "terminal.ansiCyan": "#11a8cd",
-        "terminal.ansiGreen": "#6a9955",
+        "terminal.ansiGreen": "#5cce02",
         "terminal.ansiMagenta": "#C586C0",
         "terminal.ansiRed": "#cd3131",
         "terminal.ansiWhite": "#e5e5e5",
         "terminal.ansiYellow": "#D7AF00",
         "terminal.background": "#1E1E1E",
-        "terminal.foreground": "#D4D4D4"
+        "terminal.foreground": "#F4F4F4"
     },
     "workbench.startupEditor": "none",
 }
