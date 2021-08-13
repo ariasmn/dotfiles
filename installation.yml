@@ -47,33 +47,6 @@
       become_user: root
       tags: confpulseaudio
 
-    - name: Install Brave Browser
-      block:
-        - name: Install apt-transport-https
-          apt:
-            state: present
-            name: apt-transport-https
-
-        - name: Add Brave's gpg
-          command:
-            cmd: curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-            warn: false
-
-        - name: Import Brave's repo
-          copy:
-            content: "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"
-            dest: "/etc/apt/sources.list.d/brave-browser-release.list"
-            remote_src: true
-
-        - name: Install Brave
-          apt:
-            state: present
-            name: brave-browser
-            update_cache: yes
-      become: true
-      become_user: root
-      tags: installbrave
-
     - name: Install VSCode
       block:
         - name: Install VSCode
