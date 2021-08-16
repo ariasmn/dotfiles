@@ -13,7 +13,7 @@ The playbook is a bit of a mess and could be refactored into different tasks but
 ### Run a single Ansible task
 Each task has a tag so it can be run individually. To do so:
 
-`ansible-playbook installation.yml --tags "nameoftag"`
+`ansible-playbook installation.yml --tags "nameoftag" --ask-become-pass`
 
 ### Zsh theme
 I use [powerlevel10k](https://github.com/romkatv/powerlevel10k) as my zsh theme.

@@ -31,7 +31,31 @@
       become: true
       become_user: root
       tags: installtlp
-
+    - name: Install and configure auto-cpufreq
+      block:
+        - name: Download auto-cpufreq
+          git:
+            repo: https://github.com/AdnanHodzic/auto-cpufreq.git
+            dest: "tmp/"
+            
+        - name: Install auto-cpufreq
+          command:  echo I | ./auto-cpufreq-installer
+          args:
+            chdir: "tmp/"
+          become: true
+          become_user: root
+        
+        - name: Cleanup tmp/ folder
+          file:
+            path: "tmp/"
+            state: absent
+        
+        - name: Install auto-cpufreq daemon
+          command: auto-cpufreq --install
+          become: true
+          become_user: root
+      tags: installauto-cpufreq
+    
     - name: Configure pulseaudio
       copy: src={{ item.src }} dest={{ item.dest }}
       with_items:
@@ -93,7 +117,7 @@
             dest: "{{ lookup('env', 'HOME') }}/.p10k.zsh"
             remote_src: true
       tags: installzsh
-    
+
     - name: Load nano config
       copy:
          src: "{{ playbook_dir }}/dotfiles/.nanorc"
