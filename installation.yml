@@ -71,6 +71,16 @@
       become_user: root
       tags: confpulseaudio
 
+    - name: Install Chrome
+      block:
+        - name: Install Chrome
+          apt:
+            deb: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+
+      become: true
+      become_user: root
+      tags: installchrome
+
     - name: Install VSCode
       block:
         - name: Install VSCode
