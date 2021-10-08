@@ -23,4 +23,6 @@
         "terminal.foreground": "#F4F4F4"
     },
     "workbench.startupEditor": "none",
+    "telemetry.telemetryLevel": "off",
+    "intelephense.telemetry.enabled": null
 }
