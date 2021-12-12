@@ -25,6 +25,9 @@ SlideDocks=true
 [ElectricBorders]
 TopLeft=None
 
+[MouseBindings]
+CommandAllKey=Alt
+
 [Plugins]
 coverswitchEnabled=true
 desktopchangeosdEnabled=true
