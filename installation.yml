@@ -13,7 +13,24 @@
       become: true
       become_user: root
       tags: installinitialpackages
-      
+
+    - name: Configure Plymouth and GRUB
+      block:
+        - name: Copy GRUB config file
+          copy:
+            src: "{{ playbook_dir }}/dotfiles/etc/default/grub"
+            dest: "/etc/default/grub"
+            remote_src: true
+
+        - name: Set Plymouth theme
+          command: plymouth-set-default-theme -R breeze
+
+        - name: Update GRUB
+          command: update-grub2
+      become: true
+      become_user: root
+      tags: configureplymouthgrub
+
     - name: Install and configure tlp
       block:
         - name: Install tlp
@@ -31,6 +48,7 @@
       become: true
       become_user: root
       tags: installtlp
+
     - name: Install and configure auto-cpufreq
       block:
         - name: Download auto-cpufreq
