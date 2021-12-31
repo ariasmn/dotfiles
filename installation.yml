@@ -30,7 +30,16 @@
       become: true
       become_user: root
       tags: configureplymouthgrub
-
+    
+    - name: Disable audio powersave
+      copy:
+        src: "{{ playbook_dir }}/dotfiles/etc/modprobe.d/audio_disable_powersave.conf"
+        dest: "/etc/modprobe.d/audio_disable_powersave.conf"
+        remote_src: true
+      become: true
+      become_user: root
+      tags: fixaudiopop
+    
     - name: Install battery thresholds daemon
       block:
         - name: Install tp-smapi
