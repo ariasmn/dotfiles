@@ -31,23 +31,29 @@
       become_user: root
       tags: configureplymouthgrub
 
-    - name: Install and configure tlp
+    - name: Install battery thresholds daemon
       block:
-        - name: Install tlp
+        - name: Install tp-smapi
           apt:
             state: present
             name:
-              - tlp
-              - tlp-rdw
-
-        - name: Add tlp config file
+                - tp-smapi-dkms
+      
+        - name: Copy service
           copy:
-            src: "{{ playbook_dir }}/dotfiles/etc/tlp.conf"
-            dest: "/etc/tlp.conf"
+            src: "{{ playbook_dir }}/dotfiles/etc/systemd/system/battery-thresholds.service"
+            dest: "/etc/systemd/system/battery-thresholds.service"
             remote_src: true
+
+        - name: Enable service
+          service:
+            name: battery-thresholds
+            enabled: yes
+            state: started
+          
       become: true
       become_user: root
-      tags: installtlp
+      tags: installbatterythresholds
 
     - name: Install and configure auto-cpufreq
       block:
