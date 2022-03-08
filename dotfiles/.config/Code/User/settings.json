@@ -24,5 +24,6 @@
     },
     "workbench.startupEditor": "none",
     "telemetry.telemetryLevel": "off",
-    "intelephense.telemetry.enabled": null
+    "intelephense.telemetry.enabled": null,
+    "window.restoreWindows": "none"
 }
