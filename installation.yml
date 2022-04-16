@@ -72,9 +72,9 @@
             dest: "tmp/"
             
         - name: Install auto-cpufreq
-          command:  echo I | ./auto-cpufreq-installer
+          shell: echo I | /tmp/auto-cpufreq/auto-cpufreq-installer
           args:
-            chdir: "tmp/"
+            executable: /bin/bash
           become: true
           become_user: root
         
