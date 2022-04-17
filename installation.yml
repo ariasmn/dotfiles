@@ -181,6 +181,31 @@
          remote_src: true
       tags: loadnanoconfig
 
+    - name: Load sddm config
+      block:
+        - name: Find unused themes
+          find:
+            paths: /usr/share/sddm/themes/
+            patterns: "debian-.*"
+            use_regex: true
+            file_type: directory
+          register: folders_to_delete
+
+        - name: Remove unused themes
+          file:
+            path: "{{ item.path }}"
+            state: absent
+          with_items: "{{ folders_to_delete.files }}"
+          become: yes
+
+        - name: Copy files
+          copy: src={{ item.src }} dest={{ item.dest }}
+          with_items:
+                - { src: "{{ playbook_dir }}/dotfiles/sddm/theme.conf", dest: "/usr/share/sddm/themes/breeze/theme.conf" }
+                - { src: "{{ playbook_dir }}/dotfiles/sddm/kde_settings.conf", dest: "/etc/sddm.conf.d/kde_settings.conf" }
+          become: false
+      tags: loadsddm
+
     - name: Debloat KDE
       apt:
         name:
