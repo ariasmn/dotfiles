@@ -57,6 +57,8 @@ fi
 # Allow ctrl + arrow key to move forward or backward one word
 bindkey '^[[1;5C' forward-word                        # [Ctrl-RightArrow] - move forward one word
 bindkey '^[[1;5D' backward-word                       # [Ctrl-LeftArrow] - move backward one word
+bindkey '^H'      backward-kill-word                  # [Ctrl-Backspace] - delete backward whole word
+bindkey '5~'      kill-word                           # [Ctrl-Del] - Delete forward whole word
 
 if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
 	autoload -Uz add-zle-hook-widget
