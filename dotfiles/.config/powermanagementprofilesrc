@@ -2,7 +2,7 @@
 icon=battery-charging
 
 [AC][HandleButtonEvents]
-lidAction=1
+lidAction=64
 powerButtonAction=16
 powerDownAction=16
 triggerLidActionWhenExternalMonitorPresent=false
@@ -18,7 +18,7 @@ lockBeforeTurnOff=0
 idleTime=120000
 
 [Battery][HandleButtonEvents]
-lidAction=1
+lidAction=64
 powerButtonAction=16
 powerDownAction=16
 triggerLidActionWhenExternalMonitorPresent=false
@@ -42,7 +42,7 @@ lockBeforeTurnOff=0
 idleTime=60000
 
 [LowBattery][HandleButtonEvents]
-lidAction=1
+lidAction=64
 powerButtonAction=16
 powerDownAction=16
 triggerLidActionWhenExternalMonitorPresent=false
