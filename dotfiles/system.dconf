@@ -1,0 +1,197 @@
+[com/gexperts/Tilix]
+app-title='${appName}'
+enable-wide-handle=true
+session-name='${title}'
+terminal-title-style='small'
+theme-variant='dark'
+window-style='disable-csd-hide-toolbar'
+
+[com/gexperts/Tilix/profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d]
+font='MesloLGS NF 10'
+terminal-title=' '
+use-system-font=false
+visible-name='Default'
+
+[org/gnome/control-center]
+last-panel='keyboard'
+window-state=(980, 640, false)
+
+[org/gnome/desktop/app-folders]
+folder-children=['Utilities', 'YaST']
+
+[org/gnome/desktop/app-folders/folders/Utilities]
+apps=['gnome-abrt.desktop', 'gnome-system-log.desktop', 'nm-connection-editor.desktop', 'org.gnome.baobab.desktop', 'org.gnome.Connections.desktop', 'org.gnome.DejaDup.desktop', 'org.gnome.Dictionary.desktop', 'org.gnome.DiskUtility.desktop', 'org.gnome.eog.desktop', 'org.gnome.Evince.desktop', 'org.gnome.FileRoller.desktop', 'org.gnome.fonts.desktop', 'org.gnome.seahorse.Application.desktop', 'org.gnome.tweaks.desktop', 'org.gnome.Usage.desktop', 'vinagre.desktop']
+categories=['X-GNOME-Utilities']
+name='X-GNOME-Utilities.directory'
+translate=true
+
+[org/gnome/desktop/app-folders/folders/YaST]
+categories=['X-SuSE-YaST']
+name='suse-yast.directory'
+translate=true
+
+[org/gnome/desktop/applications/terminal]
+exec='tilix'
+
+[org/gnome/desktop/background]
+color-shading-type='solid'
+picture-options='zoom'
+picture-uri='file:///usr/share/backgrounds/gnome/blobs-l.svg'
+picture-uri-dark='file:///usr/share/backgrounds/gnome/blobs-d.svg'
+primary-color='#3465a4'
+secondary-color='#000000'
+show-desktop-icons=false
+
+[org/gnome/desktop/calendar]
+show-weekdate=false
+
+[org/gnome/desktop/input-sources]
+current=uint32 0
+sources=[('xkb', 'us+altgr-intl')]
+xkb-options=@as []
+
+[org/gnome/desktop/interface]
+clock-show-weekday=true
+color-scheme='prefer-dark'
+enable-hot-corners=false
+font-antialiasing='grayscale'
+font-hinting='slight'
+gtk-theme='Adwaita-dark'
+
+[org/gnome/desktop/notifications]
+application-children=['org-gnome-terminal', 'org-gnome-software', 'org-freedesktop-problems-applet', 'com-gexperts-tilix']
+
+[org/gnome/desktop/notifications/application/com-gexperts-tilix]
+application-id='com.gexperts.Tilix.desktop'
+
+[org/gnome/desktop/notifications/application/org-freedesktop-problems-applet]
+application-id='org.freedesktop.problems.applet.desktop'
+
+[org/gnome/desktop/notifications/application/org-gnome-software]
+application-id='org.gnome.Software.desktop'
+
+[org/gnome/desktop/notifications/application/org-gnome-terminal]
+application-id='org.gnome.Terminal.desktop'
+
+[org/gnome/desktop/peripherals/touchpad]
+click-method='none'
+
+[org/gnome/desktop/privacy]
+report-technical-problems=false
+
+[org/gnome/desktop/screensaver]
+color-shading-type='solid'
+picture-options='zoom'
+picture-uri='file:///usr/share/backgrounds/gnome/blobs-l.svg'
+primary-color='#3465a4'
+secondary-color='#000000'
+
+[org/gnome/desktop/search-providers]
+sort-order=['org.gnome.Contacts.desktop', 'org.gnome.Documents.desktop', 'org.gnome.Nautilus.desktop']
+
+[org/gnome/desktop/session]
+idle-delay=uint32 0
+
+[org/gnome/desktop/wm/preferences]
+button-layout='appmenu:minimize,maximize,close'
+
+[org/gnome/evolution-data-server]
+migrated=true
+network-monitor-gio-name=''
+
+[org/gnome/gedit/plugins]
+active-plugins=['spell', 'sort', 'openlinks', 'modelines', 'filebrowser', 'docinfo']
+
+[org/gnome/gedit/plugins/filebrowser]
+root='file:///'
+tree-view=true
+virtual-root='file:///home/ismael/dotfiles'
+
+[org/gnome/gedit/preferences/editor]
+highlight-current-line=false
+
+[org/gnome/gedit/preferences/ui]
+show-tabs-mode='auto'
+
+[org/gnome/gedit/state/window]
+bottom-panel-size=140
+side-panel-active-page='GeditWindowDocumentsPanel'
+side-panel-size=200
+size=(960, 1001)
+state=87168
+
+[org/gnome/login-screen]
+enable-fingerprint-authentication=true
+enable-password-authentication=true
+enable-smartcard-authentication=false
+
+[org/gnome/mutter]
+dynamic-workspaces=false
+workspaces-only-on-primary=false
+
+[org/gnome/settings-daemon/plugins/media-keys]
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']
+home=['<Super>e']
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
+binding='<Control><Alt>t'
+command='/usr/bin/tilix'
+name='Tilix'
+
+[org/gnome/settings-daemon/plugins/power]
+sleep-inactive-ac-timeout=3600
+sleep-inactive-ac-type='nothing'
+
+[org/gnome/shell]
+enabled-extensions=['background-logo@fedorahosted.org', 'appindicatorsupport@rgcjonas.gmail.com']
+welcome-dialog-last-shown-version='42.0'
+
+[org/gnome/shell/app-switcher]
+current-workspace-only=true
+
+[org/gnome/shell/world-clocks]
+locations=@av []
+
+[org/gnome/software]
+check-timestamp=int64 1664298262
+first-run=false
+update-notification-timestamp=int64 1664214018
+
+[org/gnome/system/location]
+enabled=false
+
+[org/gnome/tweaks]
+show-extensions-notice=false
+
+[org/gtk/settings/color-chooser]
+custom-colors=[(0.18431372549019609, 0.18431372549019609, 0.18431372549019609, 1.0), (0.24705882352941178, 0.31764705882352939, 0.70980392156862748, 1.0), (0.75, 0.25, 0.25, 1.0), (0.24705882352941178, 0.31764705882352923, 0.70980392156862748, 1.0), (0.75294117647058822, 0.74509803921568629, 0.74901960784313726, 1.0), (0.14117647058823529, 0.1215686274509804, 0.19215686274509805, 1.0), (0.78431372549019607, 0.0, 0.011764705882352941, 1.0)]
+selected-color=(true, 0.18431372549019609, 0.18431372549019609, 0.18431372549019609, 1.0)
+
+[org/gtk/settings/file-chooser]
+date-format='regular'
+location-mode='path-bar'
+show-hidden=false
+show-size-column=true
+show-type-column=true
+sidebar-width=157
+sort-column='name'
+sort-directories-first=false
+sort-order='ascending'
+type-format='category'
+window-position=(26, 23)
+window-size=(1203, 902)
+
+[org/nemo/desktop]
+show-desktop-icons=true
+
+[org/nemo/preferences]
+show-hidden-files=true
+
+[org/nemo/window-state]
+geometry='960x1011+26+23'
+maximized=false
+sidebar-bookmark-breakpoint=5
+start-with-sidebar=true
+
+[system/proxy]
+mode='none'

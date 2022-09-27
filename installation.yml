@@ -1,35 +1,11 @@
 - hosts: localhost
   connection: local
   tasks:
-    - name: Install KDE's Debian packages
-      apt:
-        state: present
-        name:
-          - kde-config-sddm
-          - sddm-theme-debian-breeze
-          - kde-config-screenlocker
-          - plymouth-theme-breeze
-          - kde-config-plymouth
+    - name: Configure Plymouth
+      command: plymouth-set-default-theme -R bgrt
       become: true
       become_user: root
-      tags: installinitialpackages
-
-    - name: Configure Plymouth and GRUB
-      block:
-        - name: Copy GRUB config file
-          copy:
-            src: "{{ playbook_dir }}/dotfiles/etc/default/grub"
-            dest: "/etc/default/grub"
-            remote_src: true
-
-        - name: Set Plymouth theme
-          command: plymouth-set-default-theme -R breeze
-
-        - name: Update GRUB
-          command: update-grub2
-      become: true
-      become_user: root
-      tags: configureplymouthgrub
+      tags: configureplymouth
     
     - name: Disable audio powersave
       copy:
@@ -40,10 +16,26 @@
       become_user: root
       tags: fixaudiopop
     
+    - name: Add rpm-fusion
+      block:
+        - name: Free
+          dnf:
+            state: present
+            name: "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ansible_distribution_major_version}}.noarch.rpm"
+
+        - name: Non free
+          dnf:
+            state: present
+            name: "https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ansible_distribution_major_version}}.noarch.rpm"
+      
+      become: true
+      become_user: root
+      tags: installrpmfusion
+
     - name: Install battery thresholds daemon
       block:
         - name: Install tp-smapi
-          apt:
+          dnf:
             state: present
             name:
                 - tp-smapi-dkms
@@ -63,84 +55,115 @@
       become: true
       become_user: root
       tags: installbatterythresholds
-
-    - name: Install and configure auto-cpufreq
-      block:
-        - name: Download auto-cpufreq
-          git:
-            repo: https://github.com/AdnanHodzic/auto-cpufreq.git
-            dest: "tmp/"
-            
-        - name: Install auto-cpufreq
-          shell: echo I | /tmp/auto-cpufreq/auto-cpufreq-installer
-          args:
-            executable: /bin/bash
-          become: true
-          become_user: root
-        
-        - name: Cleanup tmp/ folder
-          file:
-            path: "tmp/"
-            state: absent
-        
-        - name: Install auto-cpufreq daemon
-          command: auto-cpufreq --install
-          become: true
-          become_user: root
-      tags: installauto-cpufreq
-    
-    - name: Configure pulseaudio
-      copy: src={{ item.src }} dest={{ item.dest }}
-      with_items:
-        - {
-            src: "{{ playbook_dir }}/dotfiles/etc/pulse/daemon.conf",
-            dest: "/etc/pulse/daemon.conf",
-          }
-        - {
-            src: "{{ playbook_dir }}/dotfiles/etc/pulse/default.pa",
-            dest: "/etc/pulse/default.pa",
-          }
-      become: true
-      become_user: root
-      tags: confpulseaudio
-
+      
     - name: Install Chrome
       block:
-        - name: Add Chrome's APT signing key
-          apt_key:
-            url: "https://dl.google.com/linux/linux_signing_key.pub"
+        - name: Install 3rd party repositories
+          dnf:
             state: present
-
-        - name: Add Chrome's repository into sources
-          apt_repository:
-            repo: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
+            name: fedora-workstation-repositories
+            
+        - name: Add Brave's repo
+          command:
+            cmd: dnf config-manager --set-enabled google-chrome
+            warn: false
+            
+        - name: Install Chrome
+          dnf:
             state: present
-            filename: google-chrome
-          
-        - name: Install Chrome stable
-          apt:
-            name: "google-chrome-stable"
-            state: latest
-            update_cache: true
+            name: google-chrome-stable
 
       become: true
       become_user: root
       tags: installchrome
 
-    - name: Install VSCode
+    - name: Install and configure VSCode
       block:
-        - name: Install VSCode
-          apt:
-            deb: https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64
+        - name: Import Microsoft's asc
+          command:
+            cmd: rpm --import https://packages.microsoft.com/keys/microsoft.asc
+            warn: false
 
+        - name: Add VSCode's repo content
+          shell: 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" 
+                  > /etc/yum.repos.d/vscode.repo'
+
+        - name: Install VSCode
+          dnf:
+            state: present
+            name: code
+
+        - name: Import VSCode's settings
+          copy:
+            src: "{{ playbook_dir }}/dotfiles/.config/Code/"
+            dest: "{{ lookup('env', 'HOME') }}/.config/Code"
+            remote_src: true
+          become: false  
       become: true
       become_user: root
       tags: installvscode
 
+    - name: Install and configure Nemo
+      block:          
+        - name: Install Nemo
+          dnf:
+            state: present
+            name: nemo
+          become: true
+          become_user: root
+
+        - name: Copy desktop icon
+          copy:
+            src: "/usr/share/applications/nemo.desktop"
+            dest: "{{ lookup('env', 'HOME') }}/.local/share/applications/"
+
+        - name: Remove comment
+          command: sed -e '/OnlyShowIn=X-Cinnamon;/s/^/#/g' -i  {{ lookup('env', 'HOME') }}/.local/share/applications/nemo.desktop
+
+        - name: Make default
+          command: xdg-mime default nemo.desktop inode/directory application/x-gnome-saved-search
+
+        - name: Remove Nautilus
+          dnf:
+            state: absent
+            name: nautilus
+          become: true
+          become_user: root
+      tags: installconfigurenemo
+
+    - name: Install and configure Tilix
+      block:
+        - name: Install Tilix
+          dnf:
+            state: present
+            name: tilix
+          become: true
+          become_user: root
+
+        - name: Create fonts directory
+          file:
+            path: "{{ item }}"
+            state: directory
+          loop:
+            - "{{ lookup('env', 'HOME') }}/.local/share/fonts/meslo"
+  
+        - name: Install Meslo fonts
+          get_url:
+            url: "{{ item }}"
+            dest: "{{ lookup('env', 'HOME') }}/.local/share/fonts/meslo"
+          loop:
+            - 
+            - https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
+            - https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf
+            - https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf
+            - https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf
+          become: false
+      tags: installconfiguretilix
+  
     - name: Install and configure zsh and powerlevel10k
       block:          
         - name: Install zsh
-          apt:
+          dnf:
             state: present
             name: zsh
           become: true
@@ -174,6 +197,26 @@
             remote_src: true
       tags: installzsh
 
+    - name: Install Gnome Tweaks
+      dnf:
+        state: present
+        name: gnome-tweaks
+      become: true
+      become_user: root
+      tags: installgnometweaks
+
+    - name: Install VLC
+      dnf:
+        state: present
+        name: vlc
+      become: true
+      become_user: root
+      tags: installvlc
+
+    - name: Load system's dconf
+      shell: dconf load / < "{{ playbook_dir }}/dotfiles/system.dconf"
+      tags: loaddconf
+
     - name: Load nano config
       copy:
          src: "{{ playbook_dir }}/dotfiles/.nanorc"
@@ -181,46 +224,20 @@
          remote_src: true
       tags: loadnanoconfig
 
-    - name: Load sddm config
-      block:
-        - name: Find unused themes
-          find:
-            paths: /usr/share/sddm/themes/
-            patterns: "debian-.*"
-            use_regex: true
-            file_type: directory
-          register: folders_to_delete
-
-        - name: Remove unused themes
-          file:
-            path: "{{ item.path }}"
-            state: absent
-          with_items: "{{ folders_to_delete.files }}"
-          become: yes
-
-        - name: Copy files
-          copy: src={{ item.src }} dest={{ item.dest }}
-          with_items:
-                - { src: "{{ playbook_dir }}/dotfiles/sddm/theme.conf", dest: "/usr/share/sddm/themes/breeze/theme.conf" }
-                - { src: "{{ playbook_dir }}/dotfiles/sddm/kde_settings.conf", dest: "/etc/sddm.conf.d/kde_settings.conf" }
-          become: false
-      tags: loadsddm
-
-    - name: Debloat KDE
-      apt:
+    - name: Debloat GNOME
+      dnf:
         name:
-          - "akonadi-*"
+          - cheese
+          - rhythmbox
+          - totem
+          - gnome-photos
+          - gnome-boxes
+          - gnome-maps
+          - gnome-contacts
+          - gnome-weather
+          - gnome-software
         state: absent
         autoremove: yes
       become: true
       become_user: root
-      tags: debloatkde
-      
-    - name: Load whole config
-      copy: src={{ item.src }} dest={{ item.dest }}
-      with_items:
-            - { src: "{{ playbook_dir }}/dotfiles/.config/", dest: "{{ lookup('env', 'HOME') }}/.config" }
-            - { src: "{{ playbook_dir }}/dotfiles/.kde/", dest: "{{ lookup('env', 'HOME') }}/.kde" }
-            - { src: "{{ playbook_dir }}/dotfiles/.local/", dest: "{{ lookup('env', 'HOME') }}/.local" }
-      become: false
-      tags: loadconfig
+      tags: debloatgnome
