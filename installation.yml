@@ -18,6 +18,16 @@
     
     - name: Add rpm-fusion
       block:
+        - name: Importing (free) key
+          ansible.builtin.rpm_key:
+            state: present
+            key: https://rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-free-fedora-2020
+
+        - name: Importing (non-free) key
+          ansible.builtin.rpm_key:
+            state: present
+            key: https://rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-nonfree-fedora-2020
+
         - name: Free
           dnf:
             state: present
@@ -34,23 +44,24 @@
 
     - name: Install battery thresholds daemon
       block:
-        - name: Install tp-smapi
-          dnf:
-            state: present
-            name:
-                - tp-smapi-dkms
-      
+        - name: check if battery directory exists
+          stat: 
+            path: /sys/class/power_supply/BAT0/
+          register: battery_directory
+
         - name: Copy service
           copy:
             src: "{{ playbook_dir }}/dotfiles/etc/systemd/system/battery-thresholds.service"
             dest: "/etc/systemd/system/battery-thresholds.service"
             remote_src: true
+          when: battery_directory.stat.exists
 
         - name: Enable service
           service:
             name: battery-thresholds
             enabled: yes
             state: started
+          when: battery_directory.stat.exists
           
       become: true
       become_user: root
@@ -63,7 +74,7 @@
             state: present
             name: fedora-workstation-repositories
             
-        - name: Add Brave's repo
+        - name: Add Google Chrome's repo
           command:
             cmd: dnf config-manager --set-enabled google-chrome
             warn: false
@@ -142,17 +153,15 @@
 
         - name: Create fonts directory
           file:
-            path: "{{ item }}"
+            path: "{{ lookup('env', 'HOME') }}/.local/share/fonts/meslo"
             state: directory
-          loop:
-            - "{{ lookup('env', 'HOME') }}/.local/share/fonts/meslo"
+          become: false
   
         - name: Install Meslo fonts
           get_url:
             url: "{{ item }}"
             dest: "{{ lookup('env', 'HOME') }}/.local/share/fonts/meslo"
           loop:
-            - 
             - https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
             - https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf
             - https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf
@@ -166,6 +175,13 @@
           dnf:
             state: present
             name: zsh
+          become: true
+          become_user: root
+
+        - name: Install util-linux-user
+          dnf:
+            state: present
+            name: util-linux-user
           become: true
           become_user: root
 

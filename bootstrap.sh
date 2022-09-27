@@ -5,7 +5,7 @@ set -e
 ROOTDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PLAYBOOK="$ROOTDIR/installation.yml"
 
-apt update && apt install -y ansible
+dnf update && dnf install -y ansible
 
 sudo -u "$SUDO_USER" ansible-playbook "$PLAYBOOK" --ask-become-pass
 

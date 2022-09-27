@@ -16,9 +16,6 @@ visible-name='Default'
 last-panel='keyboard'
 window-state=(980, 640, false)
 
-[org/gnome/desktop/app-folders]
-folder-children=['Utilities', 'YaST']
-
 [org/gnome/desktop/app-folders/folders/Utilities]
 apps=['gnome-abrt.desktop', 'gnome-system-log.desktop', 'nm-connection-editor.desktop', 'org.gnome.baobab.desktop', 'org.gnome.Connections.desktop', 'org.gnome.DejaDup.desktop', 'org.gnome.Dictionary.desktop', 'org.gnome.DiskUtility.desktop', 'org.gnome.eog.desktop', 'org.gnome.Evince.desktop', 'org.gnome.FileRoller.desktop', 'org.gnome.fonts.desktop', 'org.gnome.seahorse.Application.desktop', 'org.gnome.tweaks.desktop', 'org.gnome.Usage.desktop', 'vinagre.desktop']
 categories=['X-GNOME-Utilities']
@@ -79,13 +76,6 @@ click-method='none'
 [org/gnome/desktop/privacy]
 report-technical-problems=false
 
-[org/gnome/desktop/screensaver]
-color-shading-type='solid'
-picture-options='zoom'
-picture-uri='file:///usr/share/backgrounds/gnome/blobs-l.svg'
-primary-color='#3465a4'
-secondary-color='#000000'
-
 [org/gnome/desktop/search-providers]
 sort-order=['org.gnome.Contacts.desktop', 'org.gnome.Documents.desktop', 'org.gnome.Nautilus.desktop']
 
@@ -119,11 +109,6 @@ side-panel-active-page='GeditWindowDocumentsPanel'
 side-panel-size=200
 size=(960, 1001)
 state=87168
-
-[org/gnome/login-screen]
-enable-fingerprint-authentication=true
-enable-password-authentication=true
-enable-smartcard-authentication=false
 
 [org/gnome/mutter]
 dynamic-workspaces=false
