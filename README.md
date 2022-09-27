@@ -1,7 +1,7 @@
 # dotfiles
 These are the config files to set up a system so I feel comfortable using it.
 
-Currently running Debian as my distro and KDE as my DE.
+Currently running Fedora as my distro and GNOME as my DE.
 
 ### Automatic setup using ansible
 To quickly set-up different workstations using the same config across them, I used [Ansible](https://github.com/ansible/ansible).
