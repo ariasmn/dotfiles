@@ -103,31 +103,8 @@
       become: true
       become_user: root
       tags: confpulseaudio
-
-    - name: Install Chrome
-      block:
-        - name: Add Chrome's APT signing key
-          apt_key:
-            url: "https://dl.google.com/linux/linux_signing_key.pub"
-            state: present
-
-        - name: Add Chrome's repository into sources
-          apt_repository:
-            repo: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
-            state: present
-            filename: google-chrome
-          
-        - name: Install Chrome stable
-          apt:
-            name: "google-chrome-stable"
-            state: latest
-            update_cache: true
-
-      become: true
-      become_user: root
-      tags: installchrome
-
-    - name: Install VSCode
+      
+    - name: Install and configure VSCode
       block:
         - name: Install VSCode
           apt:
