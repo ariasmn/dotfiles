@@ -6,7 +6,9 @@ Currently running Fedora as my distro and GNOME as my DE.
 ### Automatic setup using ansible
 To quickly set-up different workstations using the same config across them, I used [Ansible](https://github.com/ansible/ansible).
 
-Just run the `bootstrap.sh` script to automatically install Ansible and run the playbook. It will install and load the dotfiles for different applications that I use.
+Install it and then run:
+
+`ansible-playbook installation.yml --ask-become-pass`
 
 The playbook is a bit of a mess and could be refactored into different tasks but it works for my use.
 
