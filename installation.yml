@@ -251,7 +251,6 @@
           - gnome-maps
           - gnome-contacts
           - gnome-weather
-          - gnome-software
         state: absent
         autoremove: yes
       become: true
