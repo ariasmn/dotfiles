@@ -67,27 +67,6 @@
       become_user: root
       tags: installbatterythresholds
       
-    - name: Install Chrome
-      block:
-        - name: Install 3rd party repositories
-          dnf:
-            state: present
-            name: fedora-workstation-repositories
-            
-        - name: Add Google Chrome's repo
-          command:
-            cmd: dnf config-manager --set-enabled google-chrome
-            warn: false
-            
-        - name: Install Chrome
-          dnf:
-            state: present
-            name: google-chrome-stable
-
-      become: true
-      become_user: root
-      tags: installchrome
-
     - name: Install and configure VSCode
       block:
         - name: Import Microsoft's asc
