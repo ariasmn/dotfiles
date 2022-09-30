@@ -25,5 +25,6 @@
     "workbench.startupEditor": "none",
     "telemetry.telemetryLevel": "off",
     "intelephense.telemetry.enabled": null,
-    "window.restoreWindows": "none"
+    "window.restoreWindows": "none",
+    "terminal.integrated.fontFamily": "MesloLGS NF"
 }

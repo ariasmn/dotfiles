@@ -8,6 +8,7 @@ window-style='disable-csd-hide-toolbar'
 
 [com/gexperts/Tilix/profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d]
 font='MesloLGS NF 10'
+palette=['#2E2E34343636', '#CCCC00000000', '#4E4E9A9A0606', '#C4C4A0A00000', '#56569C9CD6D6', '#ADAD7F7FA8A8', '#060698209A9A', '#D3D3D7D7CFCF', '#555557575353', '#EFEF29292929', '#8A8AE2E23434', '#FCFCE9E94F4F', '#56569C9CD6D6', '#ADAD7F7FA8A8', '#3434E2E2E2E2', '#EEEEEEEEECEC']
 terminal-title=' '
 use-system-font=false
 visible-name='Default'
@@ -56,10 +57,17 @@ font-hinting='slight'
 gtk-theme='Adwaita-dark'
 
 [org/gnome/desktop/notifications]
-application-children=['org-gnome-terminal', 'org-gnome-software', 'org-freedesktop-problems-applet', 'com-gexperts-tilix']
+application-children=['org-gnome-terminal', 'org-gnome-software', 'org-freedesktop-problems-applet', 'com-gexperts-tilix', 'org-gnome-nautilus', 'nemo', 'code']
+show-banners=true
+
+[org/gnome/desktop/notifications/application/code]
+application-id='code.desktop'
 
 [org/gnome/desktop/notifications/application/com-gexperts-tilix]
 application-id='com.gexperts.Tilix.desktop'
+
+[org/gnome/desktop/notifications/application/nemo]
+application-id='nemo.desktop'
 
 [org/gnome/desktop/notifications/application/org-freedesktop-problems-applet]
 application-id='org.freedesktop.problems.applet.desktop'
@@ -81,6 +89,12 @@ sort-order=['org.gnome.Contacts.desktop', 'org.gnome.Documents.desktop', 'org.gn
 
 [org/gnome/desktop/session]
 idle-delay=uint32 0
+
+[org/gnome/desktop/wm/keybindings]
+switch-applications=@as []
+switch-applications-backward=@as []
+switch-windows=['<Alt>Tab']
+switch-windows-backward=['<Shift><Alt>Tab']
 
 [org/gnome/desktop/wm/preferences]
 button-layout='appmenu:minimize,maximize,close'
@@ -124,11 +138,15 @@ command='/usr/bin/tilix'
 name='Tilix'
 
 [org/gnome/settings-daemon/plugins/power]
+power-button-action='suspend'
 sleep-inactive-ac-timeout=3600
 sleep-inactive-ac-type='nothing'
+sleep-inactive-battery-type='nothing'
 
 [org/gnome/shell]
+command-history=['r']
 enabled-extensions=['background-logo@fedorahosted.org', 'appindicatorsupport@rgcjonas.gmail.com']
+favorite-apps=['firefox.desktop', 'com.gexperts.Tilix.desktop', 'com.discordapp.Discord.desktop', 'nemo.desktop']
 welcome-dialog-last-shown-version='42.0'
 
 [org/gnome/shell/app-switcher]
@@ -138,9 +156,10 @@ current-workspace-only=true
 locations=@av []
 
 [org/gnome/software]
-check-timestamp=int64 1664298262
+check-timestamp=int64 1664546399
 first-run=false
-update-notification-timestamp=int64 1664214018
+security-timestamp=int64 0
+update-notification-timestamp=int64 1664546404
 
 [org/gnome/system/location]
 enabled=false
@@ -149,8 +168,8 @@ enabled=false
 show-extensions-notice=false
 
 [org/gtk/settings/color-chooser]
-custom-colors=[(0.18431372549019609, 0.18431372549019609, 0.18431372549019609, 1.0), (0.24705882352941178, 0.31764705882352939, 0.70980392156862748, 1.0), (0.75, 0.25, 0.25, 1.0), (0.24705882352941178, 0.31764705882352923, 0.70980392156862748, 1.0), (0.75294117647058822, 0.74509803921568629, 0.74901960784313726, 1.0), (0.14117647058823529, 0.1215686274509804, 0.19215686274509805, 1.0), (0.78431372549019607, 0.0, 0.011764705882352941, 1.0)]
-selected-color=(true, 0.18431372549019609, 0.18431372549019609, 0.18431372549019609, 1.0)
+custom-colors=[(0.61176470588235299, 0.85882352941176465, 0.99607843137254903, 1.0), (0.0, 0.47843137254901968, 0.80000000000000004, 1.0), (0.75, 0.25, 0.25, 1.0), (0.61176470588235299, 0.86274509803921562, 0.99607843137254903, 1.0), (0.33725490196078434, 0.61176470588235299, 0.83921568627450982, 1.0), (0.44705882352941179, 0.62352941176470589, 0.81176470588235294, 1.0), (0.27058823529411763, 0.48627450980392156, 0.75686274509803919, 1.0), (0.27360000000000007, 0.48640000000000011, 0.76000000000000001, 1.0)]
+selected-color=(true, 0.33725490196078434, 0.61176470588235299, 0.83921568627450982, 1.0)
 
 [org/gtk/settings/file-chooser]
 date-format='regular'
@@ -163,7 +182,7 @@ sort-column='name'
 sort-directories-first=false
 sort-order='ascending'
 type-format='category'
-window-position=(26, 23)
+window-position=(0, 32)
 window-size=(1203, 902)
 
 [org/nemo/desktop]
