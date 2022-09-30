@@ -16,6 +16,12 @@
       become_user: root
       tags: fixaudiopop
     
+    - name: Disable usb autosuspend
+      command: grubby --args="usbcore.autosuspend=-1" --update-kernel=ALL
+      become: true
+      become_user: root
+      tags: disableusbautosuspend
+    
     - name: Add rpm-fusion
       block:
         - name: Importing (free) key
