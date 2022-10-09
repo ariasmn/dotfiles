@@ -13,6 +13,9 @@ terminal-title=' '
 use-system-font=false
 visible-name='Default'
 
+[org/cinnamon/desktop/applications/terminal]
+exec='tilix'
+
 [org/gnome/control-center]
 last-panel='keyboard'
 window-state=(980, 640, false)
