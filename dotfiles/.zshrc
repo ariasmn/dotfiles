@@ -35,9 +35,9 @@ alias ls='ls -p --color=auto'
 alias ll='ls -lah'
 alias vim='vi'
 alias sudo='sudo '
+alias sdread='lspci -knn | grep -iA2 rts522a' #TP BIOS breaks SD card, but running this command makes the reader work for some reason. See https://forums.lenovo.com/t5/Other-Linux-Discussions/Lenovo-T14-AMD-Micro-SD-Reader-broken/m-p/5153185?page=3#5962875
 
 # Adding correct keybindings
-
 typeset -g -A key
 
 # Enable home key
@@ -67,3 +67,8 @@ if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
 	add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
 	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
 fi
+
+# Golang paths
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH="$HOME/go"
+PATH="$GOPATH/bin:$PATH"
