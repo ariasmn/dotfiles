@@ -17,6 +17,14 @@ Each task has a tag so it can be run individually. To do so:
 
 `ansible-playbook installation.yml --tags "nameoftag" --ask-become-pass`
 
+### AMD Systems
+If using an AMD system, install the Mesa drivers from the `freeworld` repositories. This restores the hardware acceleration functionality, disabled some time ago for legal reasons:
+
+```
+$ sudo dnf install mesa-va-drivers-freeworld
+$ sudo dnf mesa-vdpau-drivers-freeworld
+```
+
 ### Zsh theme
 I use [powerlevel10k](https://github.com/romkatv/powerlevel10k) as my zsh theme.
 The installation is [manual](https://github.com/romkatv/powerlevel10k#manual), and the only thing I do different from the provided instructions is that I clone the repository into a hidden folder, like so:
