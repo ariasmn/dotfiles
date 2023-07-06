@@ -76,9 +76,9 @@
     - name: Install and configure VSCode
       block:
         - name: Import Microsoft's asc
-          command:
-            cmd: rpm --import https://packages.microsoft.com/keys/microsoft.asc
-            warn: false
+          ansible.builtin.rpm_key:
+            state: present
+            key: https://packages.microsoft.com/keys/microsoft.asc
 
         - name: Add VSCode's repo content
           shell: 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" 
@@ -89,10 +89,10 @@
             state: present
             name: code
 
-        - name: Import VSCode's settings
+        - name: Import VSCode's settings/keybindings
           copy:
-            src: "{{ playbook_dir }}/dotfiles/.config/Code/"
-            dest: "{{ lookup('env', 'HOME') }}/.config/Code"
+            src: "{{ playbook_dir }}/dotfiles/.config/Code/User/"
+            dest: "{{ lookup('env', 'HOME') }}/.config/Code/User/"
             remote_src: true
           become: false  
       become: true
