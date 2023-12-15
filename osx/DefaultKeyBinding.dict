@@ -1,0 +1,22 @@
+{
+    "\UF729"   = "moveToBeginningOfLine:";                       /* Home         */
+    "@\UF729"  = "moveToBeginningOfDocument:";                   /* Cmd  + Home  */
+    "$\UF729"  = "moveToBeginningOfLineAndModifySelection:";     /* Shift + Home */
+    "$@\UF729" = "moveToBeginningOfDocumentAndModifySelection:"; /* Shift + Cmd  + Home */
+    "\UF72B"   = "moveToEndOfLine:";                             /* End          */
+    "@\UF72B"  = "moveToEndOfDocument:";                         /* Cmd  + End   */
+    "$\UF72B"  = "moveToEndOfLineAndModifySelection:";           /* Shift + End  */
+    "$@\UF72B" = "moveToEndOfDocumentAndModifySelection:";       /* Shift + Cmd  + End */
+
+    "^\UF702"   = "moveToBeginningOfLine:";                       /* Home         */
+    "^\UF703"   = "moveToEndOfLine:";                             /* End          */
+    "$^\UF703"  = "moveToEndOfLineAndModifySelection:";           /* Shift + End  */
+    "$^\UF702"  = "moveToBeginningOfLineAndModifySelection:";     /* Shift + Home */
+
+    "@\UF702"  = "moveWordBackward:";                            /* Cmd  + LeftArrow */
+    "@\UF703"  = "moveWordForward:";                             /* Cmd  + RightArrow */
+    "@$\UF702" = "moveWordBackwardAndModifySelection:";   /* Shift + Cmd  + Leftarrow */
+    "@$\UF703" = "moveWordForwardAndModifySelection:";   /* Shift + Cmd  + Rightarrow */
+    "@\UF728"  = "deleteWordForward:";                           /* Cmd  + Delete */
+    "@\U007F"  = "deleteWordBackward:";                          /* Cmd  + Backspace */
+}
