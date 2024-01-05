@@ -94,30 +94,36 @@
             src: "{{ playbook_dir }}/dotfiles/.config/Code/User/"
             dest: "{{ lookup('env', 'HOME') }}/.config/Code/User/"
             remote_src: true
-          become: false  
+          become: false
       become: true
       become_user: root
       tags: installvscode
 
-    - name: Install and configure Nemo
-      block:          
-        - name: Install Nemo
+    - name: Install and configure Thunar
+      block:
+        - name: Install Thunar
           dnf:
             state: present
-            name: nemo
+            name: thunar
           become: true
           become_user: root
 
-        - name: Copy desktop icon
-          copy:
-            src: "/usr/share/applications/nemo.desktop"
-            dest: "{{ lookup('env', 'HOME') }}/.local/share/applications/"
-
-        - name: Remove comment
-          command: sed -e '/OnlyShowIn=X-Cinnamon;/s/^/#/g' -i  {{ lookup('env', 'HOME') }}/.local/share/applications/nemo.desktop
+        - name: Remove settings entry
+          file:
+            path: "/usr/share/applications/thunar-settings.desktop"
+            state: absent
+          become: true
+          become_user: root
 
         - name: Make default
-          command: xdg-mime default nemo.desktop inode/directory application/x-gnome-saved-search
+          command: xdg-mime default thunar.desktop inode/directory application/x-gnome-saved-search
+
+        - name: Import Thunar's settings
+          copy:
+            src: "{{ playbook_dir }}/dotfiles/.config/Thunar/"
+            dest: "{{ lookup('env', 'HOME') }}/.config/Thunar/"
+            remote_src: true
+          become: false
 
         - name: Remove Nautilus
           dnf:
@@ -125,7 +131,7 @@
             name: nautilus
           become: true
           become_user: root
-      tags: installconfigurenemo
+      tags: installconfigurethunar
 
     - name: Install and configure Tilix
       block:
