@@ -125,6 +125,9 @@
             remote_src: true
           become: false
 
+        - name: Disable network automount
+          command: sed -i -r 's/AutoMount=true/AutoMount=false/' /usr/share/gvfs/mounts/network.mount
+
         - name: Remove Nautilus
           dnf:
             state: absent
