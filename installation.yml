@@ -94,39 +94,30 @@
             src: "{{ playbook_dir }}/dotfiles/.config/Code/User/"
             dest: "{{ lookup('env', 'HOME') }}/.config/Code/User/"
             remote_src: true
-          become: false
+          become: false  
       become: true
       become_user: root
       tags: installvscode
 
-    - name: Install and configure Thunar
-      block:
-        - name: Install Thunar
+    - name: Install and configure Nemo
+      block:          
+        - name: Install Nemo
           dnf:
             state: present
-            name: thunar
+            name: nemo
           become: true
           become_user: root
 
-        - name: Remove settings entry
-          file:
-            path: "/usr/share/applications/thunar-settings.desktop"
-            state: absent
-          become: true
-          become_user: root
+        - name: Copy desktop icon
+          copy:
+            src: "/usr/share/applications/nemo.desktop"
+            dest: "{{ lookup('env', 'HOME') }}/.local/share/applications/"
+
+        - name: Remove comment
+          command: sed -e '/OnlyShowIn=X-Cinnamon;/s/^/#/g' -i  {{ lookup('env', 'HOME') }}/.local/share/applications/nemo.desktop
 
         - name: Make default
-          command: xdg-mime default thunar.desktop inode/directory application/x-gnome-saved-search
-
-        - name: Import Thunar's settings
-          copy:
-            src: "{{ playbook_dir }}/dotfiles/.config/Thunar/"
-            dest: "{{ lookup('env', 'HOME') }}/.config/Thunar/"
-            remote_src: true
-          become: false
-
-        - name: Disable network automount
-          command: sed -i -r 's/AutoMount=true/AutoMount=false/' /usr/share/gvfs/mounts/network.mount
+          command: xdg-mime default nemo.desktop inode/directory application/x-gnome-saved-search
 
         - name: Remove Nautilus
           dnf:
@@ -134,7 +125,7 @@
             name: nautilus
           become: true
           become_user: root
-      tags: installconfigurethunar
+      tags: installconfigurenemo
 
     - name: Install and configure Tilix
       block:

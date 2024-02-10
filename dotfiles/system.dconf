@@ -13,41 +13,22 @@ terminal-title=' '
 use-system-font=false
 visible-name='Default'
 
-[org/fedorahosted/background-logo-extension]
-logo-position='bottom-right'
-
-[org/gnome/calculator]
-accuracy=9
-angle-units='degrees'
-base=10
-button-mode='advanced'
-number-format='automatic'
-show-thousands=false
-show-zeroes=false
-source-currency='DZD'
-source-units='degree'
-target-currency='DZD'
-target-units='degree'
-window-maximized=false
-window-size=(680, 584)
-word-size=64
-
-[org/gnome/clocks]
-timers=@aa{sv} []
-
-[org/gnome/clocks/state/window]
-maximized=false
-panel-id='timer'
-size=(870, 690)
+[org/cinnamon/desktop/applications/terminal]
+exec='tilix'
 
 [org/gnome/control-center]
-last-panel='sound'
-window-state=(1720, 1408, true)
+last-panel='keyboard'
+window-state=(980, 640, false)
 
 [org/gnome/desktop/app-folders/folders/Utilities]
 apps=['gnome-abrt.desktop', 'gnome-system-log.desktop', 'nm-connection-editor.desktop', 'org.gnome.baobab.desktop', 'org.gnome.Connections.desktop', 'org.gnome.DejaDup.desktop', 'org.gnome.Dictionary.desktop', 'org.gnome.DiskUtility.desktop', 'org.gnome.eog.desktop', 'org.gnome.Evince.desktop', 'org.gnome.FileRoller.desktop', 'org.gnome.fonts.desktop', 'org.gnome.seahorse.Application.desktop', 'org.gnome.tweaks.desktop', 'org.gnome.Usage.desktop', 'vinagre.desktop']
 categories=['X-GNOME-Utilities']
 name='X-GNOME-Utilities.directory'
+translate=true
+
+[org/gnome/desktop/app-folders/folders/YaST]
+categories=['X-SuSE-YaST']
+name='suse-yast.directory'
 translate=true
 
 [org/gnome/desktop/applications/terminal]
@@ -77,11 +58,9 @@ enable-hot-corners=false
 font-antialiasing='grayscale'
 font-hinting='slight'
 gtk-theme='Adwaita-dark'
-show-battery-percentage=false
-toolkit-accessibility=false
 
 [org/gnome/desktop/notifications]
-application-children=['org-gnome-software', 'org-freedesktop-problems-applet', 'com-gexperts-tilix', 'code', 'gnome-network-panel', 'gnome-power-panel', 'firefox', 'org-chromium-chromium', 'org-gnome-settings']
+application-children=['org-gnome-terminal', 'org-gnome-software', 'org-freedesktop-problems-applet', 'com-gexperts-tilix', 'org-gnome-nautilus', 'nemo', 'code']
 show-banners=true
 
 [org/gnome/desktop/notifications/application/code]
@@ -90,30 +69,20 @@ application-id='code.desktop'
 [org/gnome/desktop/notifications/application/com-gexperts-tilix]
 application-id='com.gexperts.Tilix.desktop'
 
-[org/gnome/desktop/notifications/application/firefox]
-application-id='firefox.desktop'
-
-[org/gnome/desktop/notifications/application/gnome-network-panel]
-application-id='gnome-network-panel.desktop'
-
-[org/gnome/desktop/notifications/application/gnome-power-panel]
-application-id='gnome-power-panel.desktop'
-
-[org/gnome/desktop/notifications/application/org-chromium-chromium]
-application-id='org.chromium.Chromium.desktop'
+[org/gnome/desktop/notifications/application/nemo]
+application-id='nemo.desktop'
 
 [org/gnome/desktop/notifications/application/org-freedesktop-problems-applet]
 application-id='org.freedesktop.problems.applet.desktop'
 
-[org/gnome/desktop/notifications/application/org-gnome-settings]
-application-id='org.gnome.Settings.desktop'
-
 [org/gnome/desktop/notifications/application/org-gnome-software]
 application-id='org.gnome.Software.desktop'
 
+[org/gnome/desktop/notifications/application/org-gnome-terminal]
+application-id='org.gnome.Terminal.desktop'
+
 [org/gnome/desktop/peripherals/touchpad]
 click-method='none'
-two-finger-scrolling-enabled=true
 
 [org/gnome/desktop/privacy]
 report-technical-problems=false
@@ -124,10 +93,6 @@ sort-order=['org.gnome.Contacts.desktop', 'org.gnome.Documents.desktop', 'org.gn
 [org/gnome/desktop/session]
 idle-delay=uint32 0
 
-[org/gnome/desktop/sound]
-event-sounds=true
-theme-name='__custom'
-
 [org/gnome/desktop/wm/keybindings]
 switch-applications=@as []
 switch-applications-backward=@as []
@@ -136,25 +101,6 @@ switch-windows-backward=['<Shift><Alt>Tab']
 
 [org/gnome/desktop/wm/preferences]
 button-layout='appmenu:minimize,maximize,close'
-titlebar-font='Cantarell Bold 9'
-
-[org/gnome/eog/view]
-background-color='rgb(0,0,0)'
-use-background-color=true
-
-[org/gnome/evince/default]
-continuous=true
-dual-page=false
-dual-page-odd-left=false
-enable-spellchecking=true
-fullscreen=false
-inverted-colors=false
-show-sidebar=true
-sidebar-page='thumbnails'
-sidebar-size=132
-sizing-mode='free'
-window-ratio=(4.0957983193277308, 1.6722090261282661)
-zoom=1.875
 
 [org/gnome/evolution-data-server]
 migrated=true
@@ -162,6 +108,11 @@ network-monitor-gio-name=''
 
 [org/gnome/gedit/plugins]
 active-plugins=['spell', 'sort', 'openlinks', 'modelines', 'filebrowser', 'docinfo']
+
+[org/gnome/gedit/plugins/filebrowser]
+root='file:///'
+tree-view=true
+virtual-root='file:///home/ismael/dotfiles'
 
 [org/gnome/gedit/preferences/editor]
 highlight-current-line=false
@@ -175,18 +126,6 @@ side-panel-active-page='GeditWindowDocumentsPanel'
 side-panel-size=200
 size=(960, 1001)
 state=87168
-
-[org/gnome/gnome-system-monitor]
-current-tab='processes'
-maximized=false
-network-total-in-bits=false
-show-dependencies=false
-show-whose-processes='user'
-window-state=(1023, 1408, 20, 20)
-
-[org/gnome/gnome-system-monitor/disktreenew]
-col-6-visible=true
-col-6-width=375
 
 [org/gnome/mutter]
 dynamic-workspaces=false
@@ -202,16 +141,15 @@ command='/usr/bin/tilix'
 name='Tilix'
 
 [org/gnome/settings-daemon/plugins/power]
-idle-dim=false
 power-button-action='suspend'
-power-saver-profile-on-low-battery=false
 sleep-inactive-ac-timeout=3600
 sleep-inactive-ac-type='nothing'
 sleep-inactive-battery-type='nothing'
 
 [org/gnome/shell]
-favorite-apps=['firefox.desktop', 'com.gexperts.Tilix.desktop', 'thunar.desktop', 'com.discordapp.Discord.desktop']
-looking-glass-history=['Meta.disable_unredirect_for_screen(global.screen)']
+command-history=['r']
+enabled-extensions=['background-logo@fedorahosted.org', 'appindicatorsupport@rgcjonas.gmail.com']
+favorite-apps=['firefox.desktop', 'com.gexperts.Tilix.desktop', 'com.discordapp.Discord.desktop', 'nemo.desktop']
 welcome-dialog-last-shown-version='42.0'
 
 [org/gnome/shell/app-switcher]
@@ -221,43 +159,16 @@ current-workspace-only=true
 locations=@av []
 
 [org/gnome/software]
-check-timestamp=int64 1704455531
-download-updates=true
+check-timestamp=int64 1664546399
 first-run=false
-flatpak-purge-timestamp=int64 1704332751
-install-timestamp=int64 1688320544
-online-updates-timestamp=int64 1683210546
-packagekit-historical-updates-timestamp=uint64 1683212413
 security-timestamp=int64 0
-update-notification-timestamp=int64 1704455565
-upgrade-notification-timestamp=int64 1699488195
+update-notification-timestamp=int64 1664546404
 
 [org/gnome/system/location]
 enabled=false
 
-[org/gnome/terminal/legacy]
-always-check-default-terminal=false
-
-[org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
-font='Fira Code 12'
-use-system-font=false
-
 [org/gnome/tweaks]
 show-extensions-notice=false
-
-[org/gtk/gtk4/settings/file-chooser]
-date-format='regular'
-location-mode='path-bar'
-show-hidden=true
-show-size-column=true
-show-type-column=true
-sidebar-width=170
-sort-column='name'
-sort-directories-first=false
-sort-order='ascending'
-type-format='category'
-view-type='list'
-window-size=(1675, 1048)
 
 [org/gtk/settings/color-chooser]
 custom-colors=[(0.61176470588235299, 0.85882352941176465, 0.99607843137254903, 1.0), (0.0, 0.47843137254901968, 0.80000000000000004, 1.0), (0.75, 0.25, 0.25, 1.0), (0.61176470588235299, 0.86274509803921562, 0.99607843137254903, 1.0), (0.33725490196078434, 0.61176470588235299, 0.83921568627450982, 1.0), (0.44705882352941179, 0.62352941176470589, 0.81176470588235294, 1.0), (0.27058823529411763, 0.48627450980392156, 0.75686274509803919, 1.0), (0.27360000000000007, 0.48640000000000011, 0.76000000000000001, 1.0)]
@@ -269,13 +180,25 @@ location-mode='path-bar'
 show-hidden=false
 show-size-column=true
 show-type-column=true
-sidebar-width=186
+sidebar-width=157
 sort-column='name'
 sort-directories-first=false
 sort-order='ascending'
 type-format='category'
-window-position=(26, 23)
+window-position=(0, 32)
 window-size=(1203, 902)
+
+[org/nemo/desktop]
+show-desktop-icons=true
+
+[org/nemo/preferences]
+show-hidden-files=true
+
+[org/nemo/window-state]
+geometry='960x1011+26+23'
+maximized=false
+sidebar-bookmark-breakpoint=5
+start-with-sidebar=true
 
 [system/proxy]
 mode='none'
