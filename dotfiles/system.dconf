@@ -2,7 +2,7 @@
 app-title='${appName}'
 enable-wide-handle=true
 session-name='${title}'
-terminal-title-style='small'
+terminal-title-style='none'
 theme-variant='dark'
 window-style='disable-csd-hide-toolbar'
 
