@@ -93,5 +93,7 @@
             "share": true,
             "stash": true
         }
-    }
+    },
+    "editor.stickyScroll.enabled": false,
+    "editor.fontSize": 13
 }
