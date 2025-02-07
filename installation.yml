@@ -126,33 +126,6 @@
           become: true
           become_user: root
       tags: installconfigurenemo
-
-    - name: Install and configure Tilix
-      block:
-        - name: Install Tilix
-          dnf:
-            state: present
-            name: tilix
-          become: true
-          become_user: root
-
-        - name: Create fonts directory
-          file:
-            path: "{{ lookup('env', 'HOME') }}/.local/share/fonts/meslo"
-            state: directory
-          become: false
-  
-        - name: Install Meslo fonts
-          get_url:
-            url: "{{ item }}"
-            dest: "{{ lookup('env', 'HOME') }}/.local/share/fonts/meslo"
-          loop:
-            - https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
-            - https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf
-            - https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf
-            - https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf
-          become: false
-      tags: installconfiguretilix
   
     - name: Install and configure zsh and powerlevel10k
       block:          
