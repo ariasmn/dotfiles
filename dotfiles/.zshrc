@@ -36,22 +36,8 @@ alias sdread='lspci -knn | grep -iA2 rts522a' #TP BIOS breaks SD card, but runni
 
 # Adding correct keybindings
 typeset -g -A key
-
-# Enable home key
-if [[ "${terminfo[khome]}" != "" ]]; then
-	bindkey "${terminfo[khome]}" beginning-of-line
-fi
-# Enable end key
-if [[ "${terminfo[kend]}" != "" ]]; then
-	bindkey "${terminfo[kend]}"  end-of-line
-fi
-
-# Enable del key
-if [[ "${terminfo[kdch1]}" != "" ]]; then
-	bindkey "${terminfo[kdch1]}" delete-char
-fi
-
-# Allow ctrl + arrow key to move forward or backward one word
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
 bindkey '^[[1;5C' forward-word                        # [Ctrl-RightArrow] - move forward one word
 bindkey '^[[1;5D' backward-word                       # [Ctrl-LeftArrow] - move backward one word
 bindkey '^H'      backward-kill-word                  # [Ctrl-Backspace] - delete backward whole word
