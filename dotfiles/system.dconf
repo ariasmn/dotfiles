@@ -1,72 +1,10 @@
 [org/cinnamon/desktop/applications/terminal]
 exec='ghostty'
 
-[org/fedorahosted/background-logo-extension]
-logo-position='bottom-right'
-
-[org/gnome/Disks]
-image-dir-uri='file:///home/ismael/Downloads/RG35XX-MicroSDCardImage.7z.001_FILES'
-
-[org/gnome/Ptyxis]
-default-profile-uuid='7b735426319fdd5a147704be67267510'
-profile-uuids=['7b735426319fdd5a147704be67267510']
-window-size=(uint32 193, uint32 24)
-
 [org/gnome/Snapshot]
 is-maximized=false
 window-height=640
 window-width=800
-
-[org/gnome/baobab/ui]
-is-maximized=false
-window-size=(960, 600)
-
-[org/gnome/calculator]
-accuracy=9
-angle-units='degrees'
-base=10
-button-mode='programming'
-number-format='automatic'
-show-thousands=false
-show-zeroes=false
-source-currency='DZD'
-source-units='degree'
-target-currency='DZD'
-target-units='degree'
-window-maximized=false
-window-size=(680, 1017)
-word-size=64
-
-[org/gnome/calendar]
-active-view='month'
-window-maximized=false
-window-size=(768, 600)
-
-[org/gnome/clocks]
-timers=@aa{sv} []
-
-[org/gnome/clocks/state/window]
-maximized=false
-panel-id='timer'
-size=(870, 690)
-
-[org/gnome/control-center]
-last-panel='keyboard'
-window-state=(1720, 1048, false)
-
-[org/gnome/desktop/app-folders]
-folder-children=['Utilities', 'YaST']
-
-[org/gnome/desktop/app-folders/folders/Utilities]
-apps=['gnome-abrt.desktop', 'gnome-system-log.desktop', 'nm-connection-editor.desktop', 'org.gnome.baobab.desktop', 'org.gnome.Connections.desktop', 'org.gnome.DejaDup.desktop', 'org.gnome.Dictionary.desktop', 'org.gnome.DiskUtility.desktop', 'org.gnome.eog.desktop', 'org.gnome.Evince.desktop', 'org.gnome.FileRoller.desktop', 'org.gnome.fonts.desktop', 'org.gnome.seahorse.Application.desktop', 'org.gnome.tweaks.desktop', 'org.gnome.Usage.desktop', 'vinagre.desktop']
-categories=['X-GNOME-Utilities']
-name='X-GNOME-Utilities.directory'
-translate=true
-
-[org/gnome/desktop/app-folders/folders/YaST]
-categories=['X-SuSE-YaST']
-name='suse-yast.directory'
-translate=true
 
 [org/gnome/desktop/applications/terminal]
 exec='ghostty'
@@ -102,43 +40,6 @@ gtk-theme='Adwaita-dark'
 show-battery-percentage=false
 toolkit-accessibility=false
 
-[org/gnome/desktop/notifications]
-application-children=['org-gnome-terminal', 'org-gnome-software', 'org-freedesktop-problems-applet', 'org-gnome-nautilus', 'nemo', 'code', 'gnome-network-panel', 'gnome-power-panel', 'virt-manager', 'firefox', 'org-gnome-evince', 'org-gnome-fileroller', 'com-calibre-ebook-calibre', 'org-chromium-chromium', 'org-gnome-eog', 'org-gnome-clocks', 'org-gnome-settings', 'com-discordapp-discord', 'org-fedoraproject-mediawriter', 'gparted', 'org-qbittorrent-qbittorrent', 'org-gnome-networkdisplays', 'steam', 'com-valvesoftware-steam', 'thunar', 'org-telegram-desktop', 'org-gnome-terminal-preferences', 'net-lutris-lutris', 'org-mozilla-firefox', 'org-gnome-characters', 'vlc']
-show-banners=true
-
-[org/gnome/desktop/notifications/application/code]
-application-id='code.desktop'
-
-[org/gnome/desktop/notifications/application/com-calibre-ebook-calibre]
-application-id='com.calibre_ebook.calibre.desktop'
-
-[org/gnome/desktop/notifications/application/com-discordapp-discord]
-application-id='com.discordapp.Discord.desktop'
-
-[org/gnome/desktop/notifications/application/firefox]
-application-id='firefox.desktop'
-
-[org/gnome/desktop/notifications/application/gnome-network-panel]
-application-id='gnome-network-panel.desktop'
-
-[org/gnome/desktop/notifications/application/gnome-power-panel]
-application-id='gnome-power-panel.desktop'
-
-[org/gnome/desktop/notifications/application/gparted]
-application-id='gparted.desktop'
-
-[org/gnome/desktop/notifications/application/nemo]
-application-id='nemo.desktop'
-
-[org/gnome/desktop/notifications/application/org-freedesktop-problems-applet]
-application-id='org.freedesktop.problems.applet.desktop'
-
-[org/gnome/desktop/notifications/application/org-gnome-software]
-application-id='org.gnome.Software.desktop'
-
-[org/gnome/desktop/notifications/application/org-gnome-terminal]
-application-id='org.gnome.Terminal.desktop'
-
 [org/gnome/desktop/peripherals/touchpad]
 click-method='fingers'
 tap-to-click=false
@@ -146,12 +47,6 @@ two-finger-scrolling-enabled=true
 
 [org/gnome/desktop/privacy]
 report-technical-problems=false
-
-[org/gnome/desktop/search-providers]
-sort-order=['org.gnome.Contacts.desktop', 'org.gnome.Documents.desktop', 'org.gnome.Nautilus.desktop']
-
-[org/gnome/desktop/session]
-idle-delay=uint32 0
 
 [org/gnome/desktop/sound]
 event-sounds=true
@@ -171,78 +66,6 @@ titlebar-font='Cantarell Bold 9'
 background-color='rgb(0,0,0)'
 use-background-color=true
 
-[org/gnome/evince]
-document-directory=@ms 'file:///home/ismael/Downloads'
-
-[org/gnome/evince/default]
-continuous=true
-dual-page=false
-dual-page-odd-left=true
-enable-spellchecking=true
-fullscreen=false
-inverted-colors=false
-show-sidebar=true
-sidebar-page='thumbnails'
-sidebar-size=148
-sizing-mode='free'
-window-ratio=(2.8104575163398691, 1.7777777777777777)
-zoom=0.5217635963826075
-
-[org/gnome/evolution-data-server]
-migrated=true
-network-monitor-gio-name=''
-
-[org/gnome/file-roller/dialogs/new]
-default-extension='.zip'
-encrypt-header=false
-expand-options=true
-volume-size=0
-
-[org/gnome/file-roller/listing]
-list-mode='as-folder'
-name-column-width=1500
-show-path=false
-sort-method='name'
-sort-type='ascending'
-
-[org/gnome/file-roller/ui]
-sidebar-width=200
-window-height=480
-window-width=1989
-
-[org/gnome/gedit/plugins]
-active-plugins=['spell', 'sort', 'openlinks', 'modelines', 'filebrowser', 'docinfo']
-
-[org/gnome/gedit/plugins/filebrowser]
-root='file:///'
-tree-view=true
-virtual-root='file:///home/ismael/dotfiles'
-
-[org/gnome/gedit/preferences/editor]
-highlight-current-line=false
-
-[org/gnome/gedit/preferences/ui]
-show-tabs-mode='auto'
-
-[org/gnome/gedit/state/window]
-bottom-panel-size=140
-side-panel-active-page='GeditWindowDocumentsPanel'
-side-panel-size=200
-size=(960, 1001)
-state=87168
-
-[org/gnome/gnome-system-monitor]
-current-tab='processes'
-maximized=false
-network-total-in-bits=false
-show-dependencies=false
-show-whose-processes='user'
-window-state=(1023, 1408, 20, 20)
-
-[org/gnome/gnome-system-monitor/disktreenew]
-col-6-visible=true
-col-6-width=375
-
 [org/gnome/login-screen]
 enable-fingerprint-authentication=true
 enable-password-authentication=true
@@ -251,53 +74,6 @@ enable-smartcard-authentication=false
 [org/gnome/mutter]
 dynamic-workspaces=false
 workspaces-only-on-primary=false
-
-[org/gnome/nautilus/preferences]
-default-folder-viewer='icon-view'
-migrated-gtk-settings=true
-search-filter-time-type='last_modified'
-
-[org/gnome/nautilus/window-state]
-initial-size=(890, 550)
-maximized=false
-
-[org/gnome/nm-applet/eap/06fa5f21-fcbe-4346-99d0-16d942cb79c0]
-ignore-ca-cert=false
-ignore-phase2-ca-cert=false
-
-[org/gnome/nm-applet/eap/dc8b6b3a-8e6e-4494-9824-fe7fc1459fe5]
-ignore-ca-cert=false
-ignore-phase2-ca-cert=false
-
-[org/gnome/portal/filechooser/code]
-last-folder-path='/home/ismael/Downloads'
-
-[org/gnome/portal/filechooser/com.calibre_ebook.calibre]
-last-folder-path='/home/ismael/Documents/UNI/Fundamentos_Computadores'
-
-[org/gnome/portal/filechooser/com.discordapp.Discord]
-last-folder-path='/home/ismael/Documents/UNI/Algebra'
-
-[org/gnome/portal/filechooser/net.lutris.Lutris]
-last-folder-path='/home/ismael/Downloads/Rocksmith 2014 Remastered [FitGirl Repack]'
-
-[org/gnome/portal/filechooser/org.DolphinEmu.dolphin-emu]
-last-folder-path='/home/ismael/Emulators/GC'
-
-[org/gnome/portal/filechooser/org.chromium.Chromium]
-last-folder-path='/home/ismael/Downloads'
-
-[org/gnome/portal/filechooser/org.fedoraproject.MediaWriter]
-last-folder-path='/home/ismael/Downloads'
-
-[org/gnome/portal/filechooser/org.telegram.desktop]
-last-folder-path='/home/ismael/Documents/UNI/Fundamentos_Computadores'
-
-[org/gnome/portal/filechooser/org.yuzu_emu.yuzu]
-last-folder-path='/home/ismael/.var/app/org.yuzu_emu.yuzu/data/yuzu/games'
-
-[org/gnome/settings-daemon/plugins/color]
-night-light-schedule-automatic=false
 
 [org/gnome/settings-daemon/plugins/media-keys]
 custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']
@@ -316,14 +92,6 @@ sleep-inactive-ac-timeout=3600
 sleep-inactive-ac-type='nothing'
 sleep-inactive-battery-type='nothing'
 
-[org/gnome/shell]
-app-picker-layout=[{'org.gnome.Calendar.desktop': <{'position': <0>}>, 'org.gnome.clocks.desktop': <{'position': <1>}>, 'org.chromium.Chromium.desktop': <{'position': <2>}>, 'libreoffice-calc.desktop': <{'position': <3>}>, 'org.gnome.Extensions.desktop': <{'position': <4>}>, 'org.fontforge.FontForge.desktop': <{'position': <5>}>, 'org.gnome.Calculator.desktop': <{'position': <6>}>, 'libreoffice-impress.desktop': <{'position': <7>}>, 'simple-scan.desktop': <{'position': <8>}>, 'org.gnome.Settings.desktop': <{'position': <9>}>, 'org.gnome.Terminal.desktop': <{'position': <10>}>, 'Utilities': <{'position': <11>}>, 'libreoffice-writer.desktop': <{'position': <12>}>, 'yelp.desktop': <{'position': <13>}>, 'org.gnome.TextEditor.desktop': <{'position': <14>}>, 'htop.desktop': <{'position': <15>}>, 'org.gnome.Tour.desktop': <{'position': <16>}>, 'remote-viewer.desktop': <{'position': <17>}>, 'org.gnome.Software.desktop': <{'position': <18>}>, 'virt-manager.desktop': <{'position': <19>}>}, {'code.desktop': <{'position': <0>}>, 'vlc.desktop': <{'position': <1>}>, 'dosbox-staging.desktop': <{'position': <2>}>, 'org.gnome.Cheese.desktop': <{'position': <3>}>, 'io.github.vectorgraphics.asymptote.desktop': <{'position': <4>}>, 'org.inkscape.Inkscape.desktop': <{'position': <5>}>, 'org.gnome.Snapshot.desktop': <{'position': <6>}>, 'wine-Programs-Riot Games-League of Legends.desktop': <{'position': <7>}>, 'wine-notepad.desktop': <{'position': <8>}>, 'mupdf-gl.desktop': <{'position': <9>}>, 'org.jdownloader.JDownloader.desktop': <{'position': <10>}>, 'org.gnome.SystemMonitor.desktop': <{'position': <11>}>, 'wine-Programs-Riot Games-Riot Client.desktop': <{'position': <12>}>, 'org.telegram.desktop.desktop': <{'position': <13>}>, 'org.wezfurlong.wezterm.desktop': <{'position': <14>}>, 'com.calibre_ebook.calibre.desktop': <{'position': <15>}>, 'com.calibre_ebook.calibre.ebook-edit.desktop': <{'position': <16>}>, 'com.calibre_ebook.calibre.ebook-viewer.desktop': <{'position': <17>}>, 'com.discordapp.Discord.desktop': <{'position': <18>}>, 'dev.zed.Zed.desktop': <{'position': <19>}>, 'java-1.8.0-openjdk-1.8.0.432.b06-3.fc41.x86_64-policytool.desktop': <{'position': <20>}>, 'org.gnome.Ptyxis.desktop': <{'position': <21>}>, 'wine-regedit.desktop': <{'position': <22>}>, 'org.pulseaudio.pavucontrol.desktop': <{'position': <23>}>}, {'com.calibre_ebook.calibre.lrfviewer.desktop': <{'position': <0>}>, 'com.teamviewer.TeamViewer.desktop': <{'position': <1>}>, 'org.gnome.NetworkDisplays.desktop': <{'position': <2>}>, 'com.obsproject.Studio.desktop': <{'position': <3>}>, 'org.gnome.Loupe.desktop': <{'position': <4>}>, 'gparted.desktop': <{'position': <5>}>, 'org.qbittorrent.qBittorrent.desktop': <{'position': <6>}>, 'com.valvesoftware.Steam.desktop': <{'position': <7>}>, 'wine-wineboot.desktop': <{'position': <8>}>, 'wine-winecfg.desktop': <{'position': <9>}>, 'wine-winefile.desktop': <{'position': <10>}>, 'wine-winhelp.desktop': <{'position': <11>}>, 'wine-oleview.desktop': <{'position': <12>}>, 'wine-uninstaller.desktop': <{'position': <13>}>, 'wine-wordpad.desktop': <{'position': <14>}>, 'wine-winemine.desktop': <{'position': <15>}>, 'winetricks.desktop': <{'position': <16>}>}]
-command-history=['r', 'lg']
-enabled-extensions=['appindicatorsupport@rgcjonas.gmail.com', 'unredirect@vaina.lt', 'tiling-assistant@leleat-on-github']
-favorite-apps=['org.mozilla.firefox.desktop', 'com.mitchellh.ghostty.desktop', 'nemo.desktop']
-looking-glass-history=['Meta.disable_unredirect_for_screen(global.screen)']
-welcome-dialog-last-shown-version='42.0'
-
 [org/gnome/shell/app-switcher]
 current-workspace-only=true
 
@@ -332,76 +100,8 @@ screenshot=@as []
 screenshot-window=@as []
 show-screenshot-ui=['Print']
 
-[org/gnome/shell/world-clocks]
-locations=@av []
-
-[org/gnome/software]
-check-timestamp=int64 1738910043
-download-updates=true
-first-run=false
-flatpak-purge-timestamp=int64 1738891974
-install-timestamp=int64 1688320544
-online-updates-timestamp=int64 1683210546
-packagekit-historical-updates-timestamp=uint64 1683212413
-security-timestamp=int64 0
-update-notification-timestamp=int64 1738847621
-upgrade-notification-timestamp=int64 1730358109
-
 [org/gnome/system/location]
 enabled=false
-
-[org/gnome/tweaks]
-show-extensions-notice=false
-
-[org/gtk/gtk4/settings/file-chooser]
-date-format='regular'
-location-mode='path-bar'
-show-hidden=false
-show-size-column=true
-show-type-column=true
-sidebar-width=170
-sort-column='name'
-sort-directories-first=false
-sort-order='ascending'
-type-format='category'
-view-type='list'
-window-size=(1675, 1048)
-
-[org/gtk/settings/color-chooser]
-custom-colors=[(0.53725490196078429, 0.88627450980392153, 0.20000000000000001, 1.0), (0.30196078431372547, 0.60392156862745094, 0.023529411764705882, 1.0), (0.0, 1.0, 0.0, 1.0), (0.33333333333333331, 0.3411764705882353, 0.32549019607843138, 1.0), (0.1803921568627451, 0.20392156862745098, 0.21176470588235294, 1.0), (0.11764705882352941, 0.11764705882352941, 0.11764705882352941, 1.0), (0.93333333333333335, 0.93333333333333335, 0.92549019607843142, 1.0), (0.81568627450980391, 0.81176470588235294, 0.80000000000000004, 1.0)]
-selected-color=(true, 0.53725490196078429, 0.88627450980392153, 0.20000000000000001, 1.0)
-
-[org/gtk/settings/file-chooser]
-clock-format='24h'
-date-format='regular'
-location-mode='path-bar'
-show-hidden=false
-show-size-column=true
-show-type-column=true
-sidebar-width=186
-sort-column='name'
-sort-directories-first=false
-sort-order='ascending'
-type-format='category'
-window-position=(26, 23)
-window-size=(1203, 902)
-
-[org/nemo/desktop]
-show-desktop-icons=true
-
-[org/nemo/preferences]
-show-hidden-files=false
-
-[org/nemo/search]
-search-reverse-sort=false
-search-sort-column='name'
-
-[org/nemo/window-state]
-devices-expanded=true
-geometry='2458x873+26+23'
-maximized=false
-sidebar-bookmark-breakpoint=5
-start-with-sidebar=true
 
 [system/proxy]
 mode='none'

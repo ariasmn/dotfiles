@@ -119,12 +119,6 @@
         - name: Make default
           command: xdg-mime default nemo.desktop inode/directory application/x-gnome-saved-search
 
-        - name: Remove Nautilus
-          dnf:
-            state: absent
-            name: nautilus
-          become: true
-          become_user: root
       tags: installconfigurenemo
   
     - name: Install and configure zsh and powerlevel10k
