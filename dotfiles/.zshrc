@@ -36,6 +36,7 @@ alias sdread='lspci -knn | grep -iA2 rts522a' #TP BIOS breaks SD card, but runni
 
 # Adding correct keybindings
 typeset -g -A key
+bindkey "^[[3~" delete-char
 bindkey "^[[H" beginning-of-line
 bindkey "^[[F" end-of-line
 bindkey '^[[1;5C' forward-word                        # [Ctrl-RightArrow] - move forward one word

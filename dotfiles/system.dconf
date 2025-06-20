@@ -66,11 +66,6 @@ titlebar-font='Cantarell Bold 9'
 background-color='rgb(0,0,0)'
 use-background-color=true
 
-[org/gnome/login-screen]
-enable-fingerprint-authentication=true
-enable-password-authentication=true
-enable-smartcard-authentication=false
-
 [org/gnome/mutter]
 dynamic-workspaces=false
 workspaces-only-on-primary=false
