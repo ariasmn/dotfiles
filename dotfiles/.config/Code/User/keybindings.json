@@ -1,0 +1,27 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    {
+        "key": "ctrl+alt+r",
+        "command": "workbench.action.splitEditorRight"
+    },
+    {
+        "key": "ctrl+alt+d",
+        "command": "workbench.action.splitEditorDown"
+    },
+    {
+        "key": "alt+left",
+        "command": "workbench.action.navigateLeft"
+    },
+    {
+        "key": "alt+up",
+        "command": "workbench.action.navigateUp"
+    },
+    {
+        "key": "alt+down",
+        "command": "workbench.action.navigateDown"
+    },
+    {
+        "key": "alt+right",
+        "command": "workbench.action.navigateRight"
+    }
+]

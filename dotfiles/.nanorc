@@ -1,0 +1,20 @@
+# Modern Nano Keybindings
+# For: nano 7.2
+# Syntax highlights (path might be different)
+# Options
+set tabsize 4
+set tabstospaces
+set linenumbers
+set numbercolor yellow,normal
+set scrollercolor grey,normal
+set indicator       # side bar for indicating cur position
+set smarthome       # `Home` jumps to line start first
+set afterends       # `Ctrl+Right` move to word ends instead of word starts
+set wordchars "_"   # recognize '_' as part of a word
+set zap             # delete selected text as a whole
+set atblanks        # soft wrap at blank chars
+set historylog      # remember search history
+set multibuffer     # read files into multibuffer instead of insert
+set mouse           # enable mouse support
+#set locking         # vim-like file locks
+#set nohelp          # disable help when you are familiar enough

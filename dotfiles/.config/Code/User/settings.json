@@ -1,0 +1,99 @@
+{
+    "editor.minimap.enabled": false,
+    "search.useIgnoreFiles": false,
+    "workbench.colorCustomizations": {
+        "terminal.ansiBlack": "#000000",
+        "terminal.ansiBlue": "#569cd6",
+        "terminal.ansiBrightBlack": "#666666",
+        "terminal.ansiBrightBlue": "#569cd6",
+        "terminal.ansiBrightCyan": "#9cdcfe",
+        "terminal.ansiBrightGreen": "#74ce43",
+        "terminal.ansiBrightMagenta": "#daadd6",
+        "terminal.ansiBrightRed": "#f14c4c",
+        "terminal.ansiBrightWhite": "#e5e5e5",
+        "terminal.ansiBrightYellow": "#DCDCAA",
+        "terminal.ansiCyan": "#11a8cd",
+        "terminal.ansiGreen": "#5cce02",
+        "terminal.ansiMagenta": "#C586C0",
+        "terminal.ansiRed": "#cd3131",
+        "terminal.ansiWhite": "#e5e5e5",
+        "terminal.ansiYellow": "#D7AF00",
+        "terminal.background": "#1E1E1E",
+        "terminal.foreground": "#F4F4F4"
+    },
+    "workbench.startupEditor": "none",
+    "telemetry.telemetryLevel": "off",
+    "intelephense.telemetry.enabled": null,
+    "window.restoreWindows": "none",
+    "terminal.integrated.fontFamily": "MesloLGS NF",
+    "terminal.external.linuxExec": "tilix",
+    "editor.fontWeight": "normal",
+    "go.toolsManagement.autoUpdate": true,
+    "workbench.colorTheme": "Default Dark+",
+    "gitlens.plusFeatures.enabled": false,
+    "gitlens.menus": {
+        "editor": {
+            "blame": true,
+            "clipboard": true,
+            "compare": true,
+            "history": true,
+            "remote": true
+        },
+        "editorGroup": {
+            "blame": true,
+            "compare": true
+        },
+        "editorGutter": {
+            "compare": true,
+            "remote": true,
+            "share": true
+        },
+        "editorTab": {
+            "clipboard": true,
+            "compare": true,
+            "history": true,
+            "remote": true
+        },
+        "explorer": {
+            "clipboard": true,
+            "compare": true,
+            "history": true,
+            "remote": true
+        },
+        "ghpr": {
+            "worktree": true
+        },
+        "scm": {
+            "graph": true
+        },
+        "scmRepositoryInline": {
+            "graph": true
+        },
+        "scmRepository": {
+            "authors": true,
+            "generateCommitMessage": true,
+            "graph": false
+        },
+        "scmGroupInline": {
+            "stash": true
+        },
+        "scmGroup": {
+            "compare": true,
+            "openClose": true,
+            "stash": true
+        },
+        "scmItemInline": {
+            "stash": false
+        },
+        "scmItem": {
+            "clipboard": true,
+            "compare": true,
+            "history": true,
+            "remote": true,
+            "share": true,
+            "stash": true
+        }
+    },
+    "editor.stickyScroll.enabled": false,
+    "editor.fontSize": 13
+}

@@ -1,0 +1,210 @@
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Configure Plymouth
+      command: plymouth-set-default-theme -R bgrt
+      become: true
+      become_user: root
+      tags: configureplymouth
+    
+    - name: Disable audio powersave
+      copy:
+        src: "{{ playbook_dir }}/dotfiles/etc/modprobe.d/audio_disable_powersave.conf"
+        dest: "/etc/modprobe.d/audio_disable_powersave.conf"
+        remote_src: true
+      become: true
+      become_user: root
+      tags: fixaudiopop
+    
+    - name: Disable usb autosuspend
+      command: grubby --args="usbcore.autosuspend=-1" --update-kernel=ALL
+      become: true
+      become_user: root
+      tags: disableusbautosuspend
+    
+    - name: Add rpm-fusion
+      block:
+        - name: Importing (free) key
+          ansible.builtin.rpm_key:
+            state: present
+            key: https://rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-free-fedora-2020
+
+        - name: Importing (non-free) key
+          ansible.builtin.rpm_key:
+            state: present
+            key: https://rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-nonfree-fedora-2020
+
+        - name: Free
+          dnf:
+            state: present
+            name: "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ansible_distribution_major_version}}.noarch.rpm"
+
+        - name: Non free
+          dnf:
+            state: present
+            name: "https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ansible_distribution_major_version}}.noarch.rpm"
+      
+      become: true
+      become_user: root
+      tags: installrpmfusion
+
+    - name: Install battery thresholds daemon
+      block:
+        - name: check if battery directory exists
+          stat: 
+            path: /sys/class/power_supply/BAT0/
+          register: battery_directory
+
+        - name: Copy service
+          copy:
+            src: "{{ playbook_dir }}/dotfiles/etc/systemd/system/battery-thresholds.service"
+            dest: "/etc/systemd/system/battery-thresholds.service"
+            remote_src: true
+          when: battery_directory.stat.exists
+
+        - name: Enable service
+          service:
+            name: battery-thresholds
+            enabled: yes
+            state: started
+          when: battery_directory.stat.exists
+          
+      become: true
+      become_user: root
+      tags: installbatterythresholds
+      
+    - name: Install and configure VSCode
+      block:
+        - name: Import Microsoft's asc
+          ansible.builtin.rpm_key:
+            state: present
+            key: https://packages.microsoft.com/keys/microsoft.asc
+
+        - name: Add VSCode's repo content
+          shell: 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" 
+                  > /etc/yum.repos.d/vscode.repo'
+
+        - name: Install VSCode
+          dnf:
+            state: present
+            name: code
+
+        - name: Import VSCode's settings/keybindings
+          copy:
+            src: "{{ playbook_dir }}/dotfiles/.config/Code/User/"
+            dest: "{{ lookup('env', 'HOME') }}/.config/Code/User/"
+            remote_src: true
+          become: false  
+      become: true
+      become_user: root
+      tags: installvscode
+
+    - name: Install and configure Nemo
+      block:          
+        - name: Install Nemo
+          dnf:
+            state: present
+            name: nemo
+          become: true
+          become_user: root
+
+        - name: Copy desktop icon
+          copy:
+            src: "/usr/share/applications/nemo.desktop"
+            dest: "{{ lookup('env', 'HOME') }}/.local/share/applications/"
+
+        - name: Remove comment
+          command: sed -e '/OnlyShowIn=X-Cinnamon;/s/^/#/g' -i  {{ lookup('env', 'HOME') }}/.local/share/applications/nemo.desktop
+
+        - name: Make default
+          command: xdg-mime default nemo.desktop inode/directory application/x-gnome-saved-search
+
+      tags: installconfigurenemo
+  
+    - name: Install and configure zsh and powerlevel10k
+      block:          
+        - name: Install zsh
+          dnf:
+            state: present
+            name: zsh
+          become: true
+          become_user: root
+
+        - name: Install util-linux-user
+          dnf:
+            state: present
+            name: util-linux-user
+          become: true
+          become_user: root
+
+        - name: Get zsh path
+          command: which zsh
+          register: zsh_path
+
+        - name: Change default shell
+          command: chsh -s {{ zsh_path.stdout }} {{ lookup('env', 'USER') }}
+          become: true
+          become_user: root
+
+        - name: Download and install powerlevel10k
+          git:
+            repo: https://github.com/romkatv/powerlevel10k.git
+            dest: "{{ lookup('env', 'HOME') }}/.powerlevel10k"
+            depth: 1
+
+        - name: Copy .zshrc config file
+          copy:
+            src: "{{ playbook_dir }}/dotfiles/.zshrc"
+            dest: "{{ lookup('env', 'HOME') }}/.zshrc"
+            remote_src: true
+
+        - name: Copy .p10k config file
+          copy:
+            src: "{{ playbook_dir }}/dotfiles/.p10k.zsh"
+            dest: "{{ lookup('env', 'HOME') }}/.p10k.zsh"
+            remote_src: true
+      tags: installzsh
+
+    - name: Install Gnome Tweaks
+      dnf:
+        state: present
+        name: gnome-tweaks
+      become: true
+      become_user: root
+      tags: installgnometweaks
+
+    - name: Install VLC
+      dnf:
+        state: present
+        name: vlc
+      become: true
+      become_user: root
+      tags: installvlc
+
+    - name: Load system's dconf
+      shell: dconf load / < "{{ playbook_dir }}/dotfiles/system.dconf"
+      tags: loaddconf
+
+    - name: Load nano config
+      copy:
+         src: "{{ playbook_dir }}/dotfiles/.nanorc"
+         dest: "{{ lookup('env', 'HOME') }}/.nanorc"
+         remote_src: true
+      tags: loadnanoconfig
+
+    - name: Debloat GNOME
+      dnf:
+        name:
+          - cheese
+          - rhythmbox
+          - totem
+          - gnome-photos
+          - gnome-boxes
+          - gnome-maps
+          - gnome-contacts
+          - gnome-weather
+        state: absent
+        autoremove: yes
+      become: true
+      become_user: root
+      tags: debloatgnome
