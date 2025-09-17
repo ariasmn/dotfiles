@@ -6,7 +6,7 @@
       become: true
       become_user: root
       tags: configureplymouth
-    
+
     - name: Disable audio powersave
       copy:
         src: "{{ playbook_dir }}/dotfiles/etc/modprobe.d/audio_disable_powersave.conf"
@@ -15,13 +15,13 @@
       become: true
       become_user: root
       tags: fixaudiopop
-    
+
     - name: Disable usb autosuspend
       command: grubby --args="usbcore.autosuspend=-1" --update-kernel=ALL
       become: true
       become_user: root
       tags: disableusbautosuspend
-    
+
     - name: Add rpm-fusion
       block:
         - name: Importing (free) key
@@ -43,7 +43,7 @@
           dnf:
             state: present
             name: "https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ansible_distribution_major_version}}.noarch.rpm"
-      
+
       become: true
       become_user: root
       tags: installrpmfusion
@@ -51,7 +51,7 @@
     - name: Install battery thresholds daemon
       block:
         - name: check if battery directory exists
-          stat: 
+          stat:
             path: /sys/class/power_supply/BAT0/
           register: battery_directory
 
@@ -68,11 +68,11 @@
             enabled: yes
             state: started
           when: battery_directory.stat.exists
-          
+
       become: true
       become_user: root
       tags: installbatterythresholds
-      
+
     - name: Install and configure VSCode
       block:
         - name: Import Microsoft's asc
@@ -81,8 +81,9 @@
             key: https://packages.microsoft.com/keys/microsoft.asc
 
         - name: Add VSCode's repo content
-          shell: 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" 
-                  > /etc/yum.repos.d/vscode.repo'
+          shell:
+            'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc"
+            > /etc/yum.repos.d/vscode.repo'
 
         - name: Install VSCode
           dnf:
@@ -94,35 +95,13 @@
             src: "{{ playbook_dir }}/dotfiles/.config/Code/User/"
             dest: "{{ lookup('env', 'HOME') }}/.config/Code/User/"
             remote_src: true
-          become: false  
+          become: false
       become: true
       become_user: root
       tags: installvscode
 
-    - name: Install and configure Nemo
-      block:          
-        - name: Install Nemo
-          dnf:
-            state: present
-            name: nemo
-          become: true
-          become_user: root
-
-        - name: Copy desktop icon
-          copy:
-            src: "/usr/share/applications/nemo.desktop"
-            dest: "{{ lookup('env', 'HOME') }}/.local/share/applications/"
-
-        - name: Remove comment
-          command: sed -e '/OnlyShowIn=X-Cinnamon;/s/^/#/g' -i  {{ lookup('env', 'HOME') }}/.local/share/applications/nemo.desktop
-
-        - name: Make default
-          command: xdg-mime default nemo.desktop inode/directory application/x-gnome-saved-search
-
-      tags: installconfigurenemo
-  
     - name: Install and configure zsh and powerlevel10k
-      block:          
+      block:
         - name: Install zsh
           dnf:
             state: present
@@ -187,9 +166,9 @@
 
     - name: Load nano config
       copy:
-         src: "{{ playbook_dir }}/dotfiles/.nanorc"
-         dest: "{{ lookup('env', 'HOME') }}/.nanorc"
-         remote_src: true
+        src: "{{ playbook_dir }}/dotfiles/.nanorc"
+        dest: "{{ lookup('env', 'HOME') }}/.nanorc"
+        remote_src: true
       tags: loadnanoconfig
 
     - name: Debloat GNOME
@@ -203,6 +182,7 @@
           - gnome-maps
           - gnome-contacts
           - gnome-weather
+          - ptyxis
         state: absent
         autoremove: yes
       become: true
