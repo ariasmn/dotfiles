@@ -7,16 +7,20 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "theme": "Adwaita Dark",
+  "agent": {
+    "default_profile": "write",
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-4.1"
+    },
+    "model_parameters": []
+  },
   "telemetry": {
     "metrics": false
   },
   "ui_font_size": 16,
   "buffer_font_size": 13,
-  "theme": {
-    "mode": "system",
-    "light": "One Light",
-    "dark": "VSCode Dark Polished"
-  },
   "title_bar": {
     "show_sign_in": false,
     "show_branch_name": false,
